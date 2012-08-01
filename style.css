@@ -1,0 +1,330 @@
+* { margin:0; padding:0; }
+h1,h2,h3 { font-size: 100%; font-weight: normal; }
+ol,ul { list-style: none; }
+img {border: 0;}
+
+body {
+	background: #fff;
+	padding: 3em;
+	font-family: "myriad-pro", sans-serif;
+	-o-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+}
+
+h1 {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1;
+	background-color: #f5f5f5;
+	font-weight: 100;
+}
+
+h1 a {
+	display: inline-block;
+	color: #aaa;
+	text-decoration: none;
+	padding: 10px 20px;
+}
+
+p {
+	display: inline;
+}
+
+ul {
+	font-family: "raleway", sans-serif;
+	font-size: 3em;
+	font-weight: 100;
+	text-shadow: 0 0 -1px #fff;
+	color: #dfdbd3;
+}
+
+ul li {
+	display: block;
+}
+
+ul li a {
+	font-size: 2em;
+	text-shadow: 0 0 1px #fff;
+	color: #dfdbd3;
+	text-decoration: none;
+	-o-transition: color .15s linear;
+	-moz-transition: color .15s linear;
+	-webkit-transition: color .15s linear;
+	transition: color .15s linear;
+}
+
+ul li a:hover {
+	-o-animation-name: none;
+	-moz-animation-name: none;
+	-webkit-animation-name: none;
+	animation-name: none;
+}
+
+ul li a:active {
+	position: relative;
+	top: 1px;
+}
+
+ul li #new:hover {color: #86d8d1;}
+ul li #life:hover {color: #c8e68f;}
+ul li #love:hover {color: #e68f8f;}
+ul li #travel:hover {color: #68bdff;}
+ul li #food:hover {color: #e6dd8f;}
+ul li #about:hover {color: #ccc;}
+ul li #contact:hover {color: #aaa;}
+
+ul li #new {
+	-o-animation-name: new;
+	-o-animation-duration: 3.5s;
+	-o-animation-iteration-count: infinite;
+
+	-moz-animation-name: new;
+	-moz-animation-duration: 3.5s;
+	-moz-animation-iteration-count: infinite;
+
+	-webkit-animation-name: new;
+	-webkit-animation-duration: 3.5s;
+	-webkit-animation-iteration-count: infinite;
+
+	animation-name: new;
+	animation-duration: 3.5s;
+	animation-iteration-count: infinite;
+}
+
+@-o-keyframes new {
+	0% {color: #86d8d1;}
+	20% {color: #dfdbd3;}
+	40% {color: #dfdbd3;}
+	60% {color: #dfdbd3;}
+	80% {color: #dfdbd3;}
+	100% {color: #86d8d1;}}
+@-moz-keyframes new {
+	0% {color: #86d8d1;}
+	20% {color: #dfdbd3;}
+	40% {color: #dfdbd3;}
+	60% {color: #dfdbd3;}
+	80% {color: #dfdbd3;}
+	100% {color: #86d8d1;}}
+@-webkit-keyframes new {
+	0% {color: #86d8d1;}
+	20% {color: #dfdbd3;}
+	40% {color: #dfdbd3;}
+	60% {color: #dfdbd3;}
+	80% {color: #dfdbd3;}
+	100% {color: #86d8d1;}}
+@keyframes new {
+	0% {color: #86d8d1;}
+	20% {color: #dfdbd3;}
+	40% {color: #dfdbd3;}
+	60% {color: #dfdbd3;}
+	80% {color: #dfdbd3;}
+	100% {color: #86d8d1;}}
+
+ul li #life {
+	-o-animation-name: life;
+	-o-animation-duration: 3.5s;
+	-o-animation-iteration-count: infinite;
+
+	-moz-animation-name: life;
+	-moz-animation-duration: 3.5s;
+	-moz-animation-iteration-count: infinite;
+
+	-webkit-animation-name: life;
+	-webkit-animation-duration: 3.5s;
+	-webkit-animation-iteration-count: infinite;
+
+	animation-name: life;
+	animation-duration: 3.5s;
+	animation-iteration-count: infinite;
+}
+
+@-o-keyframes life {
+	0% {color: #dfdbd3;}
+	20% {color: #c8e68f;}
+	40% {color: #dfdbd3;}
+	60% {color: #dfdbd3;}
+	80% {color: #dfdbd3;}}
+@-moz-keyframes life {
+	0% {color: #dfdbd3;}
+	20% {color: #c8e68f;}
+	40% {color: #dfdbd3;}
+	60% {color: #dfdbd3;}
+	80% {color: #dfdbd3;}}
+@-webkit-keyframes life {
+	0% {color: #dfdbd3;}
+	20% {color: #c8e68f;}
+	40% {color: #dfdbd3;}
+	60% {color: #dfdbd3;}
+	80% {color: #dfdbd3;}}
+@keyframes life {
+	0% {color: #dfdbd3;}
+	20% {color: #c8e68f;}
+	40% {color: #dfdbd3;}
+	60% {color: #dfdbd3;}
+	80% {color: #dfdbd3;}}
+
+ul li #love {
+	-o-animation-name: love;
+	-o-animation-duration: 3.5s;
+	-o-animation-iteration-count: infinite;
+
+	-moz-animation-name: love;
+	-moz-animation-duration: 3.5s;
+	-moz-animation-iteration-count: infinite;
+
+	-webkit-animation-name: love;
+	-webkit-animation-duration: 3.5s;
+	-webkit-animation-iteration-count: infinite;
+
+	animation-name: love;
+	animation-duration: 3.5s;
+	animation-iteration-count: infinite;
+}
+
+@-o-keyframes love {
+	0% {color: #dfdbd3;}
+	20% {color: #dfdbd3;}
+	40% {color: #e68f8f;}
+	60% {color: #dfdbd3;}
+	80% {color: #dfdbd3;}}
+@-moz-keyframes love {
+	0% {color: #dfdbd3;}
+	20% {color: #dfdbd3;}
+	40% {color: #e68f8f;}
+	60% {color: #dfdbd3;}
+	80% {color: #dfdbd3;}}
+@-webkit-keyframes love {
+	0% {color: #dfdbd3;}
+	20% {color: #dfdbd3;}
+	40% {color: #e68f8f;}
+	60% {color: #dfdbd3;}
+	80% {color: #dfdbd3;}}
+@keyframes love {
+	0% {color: #dfdbd3;}
+	20% {color: #dfdbd3;}
+	40% {color: #e68f8f;}
+	60% {color: #dfdbd3;}
+	80% {color: #dfdbd3;}}
+
+ul li #travel {
+	-o-animation-name: travel;
+	-o-animation-duration: 3.5s;
+	-o-animation-iteration-count: infinite;
+
+	-moz-animation-name: travel;
+	-moz-animation-duration: 3.5s;
+	-moz-animation-iteration-count: infinite;
+
+	-webkit-animation-name: travel;
+	-webkit-animation-duration: 3.5s;
+	-webkit-animation-iteration-count: infinite;
+
+	animation-name: travel;
+	animation-duration: 3.5s;
+	animation-iteration-count: infinite;
+}
+
+@-o-keyframes travel {
+	0% {color: #dfdbd3;}
+	20% {color: #dfdbd3;}
+	40% {color: #dfdbd3;}
+	60% {color: #68bdff;}
+	80% {color: #dfdbd3;}}
+@-moz-keyframes travel {
+	0% {color: #dfdbd3;}
+	20% {color: #dfdbd3;}
+	40% {color: #dfdbd3;}
+	60% {color: #68bdff;}
+	80% {color: #dfdbd3;}}
+@-webkit-keyframes travel {
+	0% {color: #dfdbd3;}
+	20% {color: #dfdbd3;}
+	40% {color: #dfdbd3;}
+	60% {color: #68bdff;}
+	80% {color: #dfdbd3;}}
+@keyframes travel {
+	0% {color: #dfdbd3;}
+	20% {color: #dfdbd3;}
+	40% {color: #dfdbd3;}
+	60% {color: #68bdff;}
+	80% {color: #dfdbd3;}}
+
+ul li #food {
+	-o-animation-name: food;
+	-o-animation-duration: 3.5s;
+	-o-animation-iteration-count: infinite;
+
+	-moz-animation-name: food;
+	-moz-animation-duration: 3.5s;
+	-moz-animation-iteration-count: infinite;
+
+	-webkit-animation-name: food;
+	-webkit-animation-duration: 3.5s;
+	-webkit-animation-iteration-count: infinite;
+
+	animation-name: food;
+	animation-duration: 3.5s;
+	animation-iteration-count: infinite;
+}
+
+@-o-keyframes food {
+	0% {color: #dfdbd3;}
+	20% {color: #dfdbd3;}
+	40% {color: #dfdbd3;}
+	60% {color: #dfdbd3;}
+	80% {color: #e6dd8f;}}
+@-moz-keyframes food {
+	0% {color: #dfdbd3;}
+	20% {color: #dfdbd3;}
+	40% {color: #dfdbd3;}
+	60% {color: #dfdbd3;}
+	80% {color: #e6dd8f;}}
+@-webkit-keyframes food {
+	0% {color: #dfdbd3;}
+	20% {color: #dfdbd3;}
+	40% {color: #dfdbd3;}
+	60% {color: #dfdbd3;}
+	80% {color: #e6dd8f;}}
+@keyframes food {
+	0% {color: #dfdbd3;}
+	20% {color: #dfdbd3;}
+	40% {color: #dfdbd3;}
+	60% {color: #dfdbd3;}
+	80% {color: #e6dd8f;}}
+
+.footer {
+	margin-top: 3em;
+	color: #ddd;
+	font-size: .75em;
+	line-height: 1.5em;
+	-o-transition: color .15s linear;
+	-moz-transition: color .15s linear;
+	-webkit-transition: color .15s linear;
+	transition: color .15s linear;
+}
+
+.footer a {
+	color: #aaa;
+	text-decoration: none;
+	border-bottom: 1px dotted #aaa;
+	-o-transition: color .15s linear, border .15s linear;
+	-moz-transition: color .15s linear, border .15s linear;
+	-webkit-transition: color .15s linear, border .15s linear;
+	transition: color .15s linear, border .15s linear;
+}
+
+.footer:hover { color: #aaa; }
+.footer:hover a {
+	color: #000;
+	border-bottom: 1px solid #000;
+}
+
+@media (max-width: 430px) {
+	
+	ul {
+		font-size: 2em;
+	}
+}
