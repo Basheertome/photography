@@ -1,3 +1,3 @@
-ErrorDocument 404 error.html
-ErrorDocument 403 error.html
-ErrorDocument 500 error.html
+ErrorDocument 404 http://click.basheertome.com/error.html
+ErrorDocument 403 http://click.basheertome.com/error.html
+ErrorDocument 500 http://click.basheertome.com/error.html
