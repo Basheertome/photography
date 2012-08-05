@@ -90,8 +90,9 @@ $(document).ready(function(){
 
 function nextImage() {
 	n_photo = $('#photos td[title="' + $(".preview .info #title").text() + '"]').next().children().children();
+	nn_photo = $('#photos td[title="' + $(".preview .info #title").text() + '"]').next().next().children().children();
 	if ($('#fullscreen img').attr('alt') == 'small') {
-		$('.preview').css('background-image', 'url("' + n_photo.attr('src').slice(0,-5) + 'b.jpg")\, ' + $('.preview').css('background-image').split(', ',1));
+		$('.preview').css('background-image', 'url("' + n_photo.attr('src').slice(0,-5) + 'b.jpg")\, ' + $('.preview').css('background-image').split(', ',1) + '\, url("' + nn_photo.attr('src').slice(0,-5) + 'b.jpg")');
 	}
 	if ($(window).width() > 640) {
 	      b_url = n_photo.attr('src').slice(0,-5) + 'b.jpg';
@@ -125,8 +126,9 @@ function nextImage() {
 
 function previousImage() {
 	p_photo = $('#photos td[title="' + $(".preview .info #title").text() + '"]').prev().children().children();
+	pp_photo = $('#photos td[title="' + $(".preview .info #title").text() + '"]').prev().prev().children().children();
 	if ($('#fullscreen img').attr('alt') == 'small') {
-		$('.preview').css('background-image', 'url("' + p_photo.attr('src').slice(0,-5) + 'b.jpg")\, ' + $('.preview').css('background-image').split(', ',1));
+		$('.preview').css('background-image', 'url("' + p_photo.attr('src').slice(0,-5) + 'b.jpg")\, ' + $('.preview').css('background-image').split(', ',1) + '\, url("' + pp_photo.attr('src').slice(0,-5) + 'b.jpg")');
 	}
 	if ($(window).width() > 640) {
 	      b_url = p_photo.attr('src').slice(0,-5) + 'b.jpg';
@@ -170,11 +172,30 @@ function fullScreen() {
 		$('.preview').css('background-image', 'url("' + $('.preview span span img').attr('src') + '")');
 		$('#fullscreen img').attr({'src' : '../images/smallscreen.png', 'alt' : 'small'});
 		$('.preview span span, .preview .close').fadeOut(150);
+		var docElm = document.documentElement;
+		if (docElm.requestFullscreen) {
+		    docElm.requestFullscreen();
+		}
+		else if (docElm.mozRequestFullScreen) {
+		    docElm.mozRequestFullScreen();
+		}
+		else if (docElm.webkitRequestFullScreen) {
+		    docElm.webkitRequestFullScreen();
+		}
 	}
 	else {
 		$('.preview span span, .preview .close').fadeIn(150);
 		$('#fullscreen img').attr({'src' : '../images/fullscreen.png', 'alt' : 'full'});
 		$('.preview').css('background-image', '');
+		if (document.exitFullscreen) {
+		    document.exitFullscreen();
+		}
+		else if (document.mozCancelFullScreen) {
+		    document.mozCancelFullScreen();
+		}
+		else if (document.webkitCancelFullScreen) {
+		    document.webkitCancelFullScreen();
+		}
 	}
 }
 
