@@ -92,7 +92,11 @@ function nextImage() {
 	n_photo = $('#photos td[title="' + $(".preview .info #title").text() + '"]').next().children().children();
 	nn_photo = $('#photos td[title="' + $(".preview .info #title").text() + '"]').next().next().children().children();
 	if ($('#fullscreen img').attr('alt') == 'small') {
-		$('.preview').css('background-image', 'url("' + n_photo.attr('src').slice(0,-5) + 'b.jpg")\, ' + $('.preview').css('background-image').split(', ',1) + '\, url("' + nn_photo.attr('src').slice(0,-5) + 'b.jpg")');
+		if (nn_photo.attr('src')) {
+			$('.preview').css('background-image', 'url("' + n_photo.attr('src').slice(0,-5) + 'b.jpg")\, ' + $('.preview').css('background-image').split(', ',1) + '\, url("' + nn_photo.attr('src').slice(0,-5) + 'b.jpg")');
+		} else {
+			$('.preview').css('background-image', 'url("' + n_photo.attr('src').slice(0,-5) + 'b.jpg")\, ' + $('.preview').css('background-image').split(', ',1));
+		}
 	}
 	if ($(window).width() > 640) {
 	      b_url = n_photo.attr('src').slice(0,-5) + 'b.jpg';
@@ -128,7 +132,11 @@ function previousImage() {
 	p_photo = $('#photos td[title="' + $(".preview .info #title").text() + '"]').prev().children().children();
 	pp_photo = $('#photos td[title="' + $(".preview .info #title").text() + '"]').prev().prev().children().children();
 	if ($('#fullscreen img').attr('alt') == 'small') {
-		$('.preview').css('background-image', 'url("' + p_photo.attr('src').slice(0,-5) + 'b.jpg")\, ' + $('.preview').css('background-image').split(', ',1) + '\, url("' + pp_photo.attr('src').slice(0,-5) + 'b.jpg")');
+		if (pp_photo.attr('src')) {
+			$('.preview').css('background-image', 'url("' + p_photo.attr('src').slice(0,-5) + 'b.jpg")\, ' + $('.preview').css('background-image').split(', ',1) + '\, url("' + pp_photo.attr('src').slice(0,-5) + 'b.jpg")');
+		} else {
+			$('.preview').css('background-image', 'url("' + p_photo.attr('src').slice(0,-5) + 'b.jpg")\, ' + $('.preview').css('background-image').split(', ',1));
+		}
 	}
 	if ($(window).width() > 640) {
 	      b_url = p_photo.attr('src').slice(0,-5) + 'b.jpg';
