@@ -30,7 +30,7 @@
 	 var s = new Array();
 	 for (var i=31; i >= 0; i--) {
 	  photo = rsp.photos.photo[ i ];
-	  if ((photo.o_width / photo.o_height) > 1.7 || (photo.o_width / photo.o_height) < 1.3) {
+	  if ((photo.o_width / photo.o_height) > 1.8 || (photo.o_width / photo.o_height) < 1.3) {
 		p_vert = ' class="vertical"';
 	  } else {p_vert = '';}
 	  t_url = "http://farm" + photo.farm + ".static.flickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_z" + ".jpg";
