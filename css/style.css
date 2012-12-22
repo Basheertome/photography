@@ -6,8 +6,10 @@ img {border: 0;}
 html {min-height: 100%;}
 html.new {box-shadow: inset 0 0 5px #86d8d1;}
 html.life {box-shadow: inset 0 0 5px #c8e68f;}
-html.love {box-shadow: inset 0 0 5px #e68f8f;}
+html.land {box-shadow: inset 0 0 5px #f7c78e;}
 html.travel {box-shadow: inset 0 0 5px #68bdff;}
+html.love {box-shadow: inset 0 0 5px #e68f8f;}
+html.flora {box-shadow: inset 0 0 5px #c8a6dc;}
 html.food {box-shadow: inset 0 0 5px #e6dd8f;}
 
 body {
@@ -249,19 +251,21 @@ h1 a:active {
 
 .navigation li #new:hover {color: #86d8d1;}
 .navigation li #life:hover {color: #c8e68f;}
-.navigation li #love:hover {color: #e68f8f;}
+.navigation li #land:hover {color: #f7c78e;}
 .navigation li #travel:hover {color: #68bdff;}
+.navigation li #love:hover {color: #e68f8f;}
+.navigation li #flora:hover {color: #c8a6dc;}
 .navigation li #food:hover {color: #e6dd8f;}
 .navigation li #about:hover {color: #ccc;}
-.navigation li #contact:hover {color: #aaa;}
 
 .navigation > #new {color: #86d8d1;}
 .navigation > #life {color: #c8e68f;}
-.navigation > #love {color: #e68f8f;}
+.navigation > #land {color: #f7c78e;}
 .navigation > #travel {color: #68bdff;}
+.navigation > #love {color: #e68f8f;}
+.navigation > #flora {color: #c8a6dc;}
 .navigation > #food {color: #e6dd8f;}
 .navigation > #about {color: #ccc;}
-.navigation > #contact {color: #aaa;}
 
 #photos {
 	position: relative;

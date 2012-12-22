@@ -78,11 +78,12 @@ ul li a:active {
 
 ul li #new:hover {color: #86d8d1;}
 ul li #life:hover {color: #c8e68f;}
-ul li #love:hover {color: #e68f8f;}
+ul li #land:hover {color: #f7c78e;}
 ul li #travel:hover {color: #68bdff;}
+ul li #love:hover {color: #e68f8f;}
+ul li #flora:hover {color: #c8a6dc;}
 ul li #food:hover {color: #e6dd8f;}
 ul li #about:hover {color: #ccc;}
-ul li #contact:hover {color: #aaa;}
 
 ul li #new {
 	-o-animation-name: new;
@@ -104,31 +105,39 @@ ul li #new {
 
 @-o-keyframes new {
 	0% {color: #86d8d1;}
-	20% {color: #dfdbd3;}
-	40% {color: #dfdbd3;}
-	60% {color: #dfdbd3;}
-	80% {color: #dfdbd3;}
+	14% {color: #dfdbd3;}
+	28% {color: #dfdbd3;}
+	42% {color: #dfdbd3;}
+	56% {color: #dfdbd3;}
+	70% {color: #dfdbd3;}
+	84% {color: #dfdbd3;}
 	100% {color: #86d8d1;}}
 @-moz-keyframes new {
 	0% {color: #86d8d1;}
-	20% {color: #dfdbd3;}
-	40% {color: #dfdbd3;}
-	60% {color: #dfdbd3;}
-	80% {color: #dfdbd3;}
+	14% {color: #dfdbd3;}
+	28% {color: #dfdbd3;}
+	42% {color: #dfdbd3;}
+	56% {color: #dfdbd3;}
+	70% {color: #dfdbd3;}
+	84% {color: #dfdbd3;}
 	100% {color: #86d8d1;}}
 @-webkit-keyframes new {
 	0% {color: #86d8d1;}
-	20% {color: #dfdbd3;}
-	40% {color: #dfdbd3;}
-	60% {color: #dfdbd3;}
-	80% {color: #dfdbd3;}
+	14% {color: #dfdbd3;}
+	28% {color: #dfdbd3;}
+	42% {color: #dfdbd3;}
+	56% {color: #dfdbd3;}
+	70% {color: #dfdbd3;}
+	84% {color: #dfdbd3;}
 	100% {color: #86d8d1;}}
 @keyframes new {
 	0% {color: #86d8d1;}
-	20% {color: #dfdbd3;}
-	40% {color: #dfdbd3;}
-	60% {color: #dfdbd3;}
-	80% {color: #dfdbd3;}
+	14% {color: #dfdbd3;}
+	28% {color: #dfdbd3;}
+	42% {color: #dfdbd3;}
+	56% {color: #dfdbd3;}
+	70% {color: #dfdbd3;}
+	84% {color: #dfdbd3;}
 	100% {color: #86d8d1;}}
 
 ul li #life {
@@ -151,71 +160,87 @@ ul li #life {
 
 @-o-keyframes life {
 	0% {color: #dfdbd3;}
-	20% {color: #c8e68f;}
-	40% {color: #dfdbd3;}
-	60% {color: #dfdbd3;}
-	80% {color: #dfdbd3;}}
+	14% {color: #c8e68f;}
+	28% {color: #dfdbd3;}
+	42% {color: #dfdbd3;}
+	56% {color: #dfdbd3;}
+	70% {color: #dfdbd3;}
+	84% {color: #dfdbd3;}}
 @-moz-keyframes life {
 	0% {color: #dfdbd3;}
-	20% {color: #c8e68f;}
-	40% {color: #dfdbd3;}
-	60% {color: #dfdbd3;}
-	80% {color: #dfdbd3;}}
+	14% {color: #c8e68f;}
+	28% {color: #dfdbd3;}
+	42% {color: #dfdbd3;}
+	56% {color: #dfdbd3;}
+	70% {color: #dfdbd3;}
+	84% {color: #dfdbd3;}}
 @-webkit-keyframes life {
 	0% {color: #dfdbd3;}
-	20% {color: #c8e68f;}
-	40% {color: #dfdbd3;}
-	60% {color: #dfdbd3;}
-	80% {color: #dfdbd3;}}
+	14% {color: #c8e68f;}
+	28% {color: #dfdbd3;}
+	42% {color: #dfdbd3;}
+	56% {color: #dfdbd3;}
+	70% {color: #dfdbd3;}
+	84% {color: #dfdbd3;}}
 @keyframes life {
 	0% {color: #dfdbd3;}
-	20% {color: #c8e68f;}
-	40% {color: #dfdbd3;}
-	60% {color: #dfdbd3;}
-	80% {color: #dfdbd3;}}
+	14% {color: #c8e68f;}
+	28% {color: #dfdbd3;}
+	42% {color: #dfdbd3;}
+	56% {color: #dfdbd3;}
+	70% {color: #dfdbd3;}
+	84% {color: #dfdbd3;}}
 
-ul li #love {
-	-o-animation-name: love;
+ul li #land {
+	-o-animation-name: land;
 	-o-animation-duration: 3.5s;
 	-o-animation-iteration-count: infinite;
 
-	-moz-animation-name: love;
+	-moz-animation-name: land;
 	-moz-animation-duration: 3.5s;
 	-moz-animation-iteration-count: infinite;
 
-	-webkit-animation-name: love;
+	-webkit-animation-name: land;
 	-webkit-animation-duration: 3.5s;
 	-webkit-animation-iteration-count: infinite;
 
-	animation-name: love;
+	animation-name: land;
 	animation-duration: 3.5s;
 	animation-iteration-count: infinite;
 }
 
-@-o-keyframes love {
+@-o-keyframes land {
 	0% {color: #dfdbd3;}
-	20% {color: #dfdbd3;}
-	40% {color: #e68f8f;}
-	60% {color: #dfdbd3;}
-	80% {color: #dfdbd3;}}
-@-moz-keyframes love {
+	14% {color: #dfdbd3;}
+	28% {color: #f7c78e;}
+	42% {color: #dfdbd3;}
+	56% {color: #dfdbd3;}
+	70% {color: #dfdbd3;}
+	84% {color: #dfdbd3;}}
+@-moz-keyframes land {
 	0% {color: #dfdbd3;}
-	20% {color: #dfdbd3;}
-	40% {color: #e68f8f;}
-	60% {color: #dfdbd3;}
-	80% {color: #dfdbd3;}}
-@-webkit-keyframes love {
+	14% {color: #dfdbd3;}
+	28% {color: #f7c78e;}
+	42% {color: #dfdbd3;}
+	56% {color: #dfdbd3;}
+	70% {color: #dfdbd3;}
+	84% {color: #dfdbd3;}}
+@-webkit-keyframes land {
 	0% {color: #dfdbd3;}
-	20% {color: #dfdbd3;}
-	40% {color: #e68f8f;}
-	60% {color: #dfdbd3;}
-	80% {color: #dfdbd3;}}
-@keyframes love {
+	14% {color: #dfdbd3;}
+	28% {color: #f7c78e;}
+	42% {color: #dfdbd3;}
+	56% {color: #dfdbd3;}
+	70% {color: #dfdbd3;}
+	84% {color: #dfdbd3;}}
+@keyframes land {
 	0% {color: #dfdbd3;}
-	20% {color: #dfdbd3;}
-	40% {color: #e68f8f;}
-	60% {color: #dfdbd3;}
-	80% {color: #dfdbd3;}}
+	14% {color: #dfdbd3;}
+	28% {color: #f7c78e;}
+	42% {color: #dfdbd3;}
+	56% {color: #dfdbd3;}
+	70% {color: #dfdbd3;}
+	84% {color: #dfdbd3;}}
 
 ul li #travel {
 	-o-animation-name: travel;
@@ -237,28 +262,138 @@ ul li #travel {
 
 @-o-keyframes travel {
 	0% {color: #dfdbd3;}
-	20% {color: #dfdbd3;}
-	40% {color: #dfdbd3;}
-	60% {color: #68bdff;}
-	80% {color: #dfdbd3;}}
+	14% {color: #dfdbd3;}
+	28% {color: #dfdbd3;}
+	42% {color: #68bdff;}
+	56% {color: #dfdbd3;}
+	70% {color: #dfdbd3;}
+	84% {color: #dfdbd3;}}
 @-moz-keyframes travel {
 	0% {color: #dfdbd3;}
-	20% {color: #dfdbd3;}
-	40% {color: #dfdbd3;}
-	60% {color: #68bdff;}
-	80% {color: #dfdbd3;}}
+	14% {color: #dfdbd3;}
+	28% {color: #dfdbd3;}
+	42% {color: #68bdff;}
+	56% {color: #dfdbd3;}
+	70% {color: #dfdbd3;}
+	84% {color: #dfdbd3;}}
 @-webkit-keyframes travel {
 	0% {color: #dfdbd3;}
-	20% {color: #dfdbd3;}
-	40% {color: #dfdbd3;}
-	60% {color: #68bdff;}
-	80% {color: #dfdbd3;}}
+	14% {color: #dfdbd3;}
+	28% {color: #dfdbd3;}
+	42% {color: #68bdff;}
+	56% {color: #dfdbd3;}
+	70% {color: #dfdbd3;}
+	84% {color: #dfdbd3;}}
 @keyframes travel {
 	0% {color: #dfdbd3;}
-	20% {color: #dfdbd3;}
-	40% {color: #dfdbd3;}
-	60% {color: #68bdff;}
-	80% {color: #dfdbd3;}}
+	14% {color: #dfdbd3;}
+	28% {color: #dfdbd3;}
+	42% {color: #68bdff;}
+	56% {color: #dfdbd3;}
+	70% {color: #dfdbd3;}
+	84% {color: #dfdbd3;}}
+
+ul li #love {
+	-o-animation-name: love;
+	-o-animation-duration: 3.5s;
+	-o-animation-iteration-count: infinite;
+
+	-moz-animation-name: love;
+	-moz-animation-duration: 3.5s;
+	-moz-animation-iteration-count: infinite;
+
+	-webkit-animation-name: love;
+	-webkit-animation-duration: 3.5s;
+	-webkit-animation-iteration-count: infinite;
+
+	animation-name: love;
+	animation-duration: 3.5s;
+	animation-iteration-count: infinite;
+}
+
+@-o-keyframes love {
+	0% {color: #dfdbd3;}
+	14% {color: #dfdbd3;}
+	28% {color: #dfdbd3;}
+	42% {color: #dfdbd3;}
+	56% {color: #e68f8f;}
+	70% {color: #dfdbd3;}
+	84% {color: #dfdbd3;}}
+@-moz-keyframes love {
+	0% {color: #dfdbd3;}
+	14% {color: #dfdbd3;}
+	28% {color: #dfdbd3;}
+	42% {color: #dfdbd3;}
+	56% {color: #e68f8f;}
+	70% {color: #dfdbd3;}
+	84% {color: #dfdbd3;}}
+@-webkit-keyframes love {
+	0% {color: #dfdbd3;}
+	14% {color: #dfdbd3;}
+	28% {color: #dfdbd3;}
+	42% {color: #dfdbd3;}
+	56% {color: #e68f8f;}
+	70% {color: #dfdbd3;}
+	84% {color: #dfdbd3;}}
+@keyframes love {
+	0% {color: #dfdbd3;}
+	14% {color: #dfdbd3;}
+	28% {color: #dfdbd3;}
+	42% {color: #dfdbd3;}
+	56% {color: #e68f8f;}
+	70% {color: #dfdbd3;}
+	84% {color: #dfdbd3;}}
+
+ul li #flora {
+	-o-animation-name: flora;
+	-o-animation-duration: 3.5s;
+	-o-animation-iteration-count: infinite;
+
+	-moz-animation-name: flora;
+	-moz-animation-duration: 3.5s;
+	-moz-animation-iteration-count: infinite;
+
+	-webkit-animation-name: flora;
+	-webkit-animation-duration: 3.5s;
+	-webkit-animation-iteration-count: infinite;
+
+	animation-name: flora;
+	animation-duration: 3.5s;
+	animation-iteration-count: infinite;
+}
+
+@-o-keyframes flora {
+	0% {color: #dfdbd3;}
+	14% {color: #dfdbd3;}
+	28% {color: #dfdbd3;}
+	42% {color: #dfdbd3;}
+	56% {color: #dfdbd3;}
+	70% {color: #c8a6dc;}
+	84% {color: #dfdbd3;}}
+@-moz-keyframes flora {
+	0% {color: #dfdbd3;}
+	14% {color: #dfdbd3;}
+	28% {color: #dfdbd3;}
+	42% {color: #dfdbd3;}
+	56% {color: #dfdbd3;}
+	70% {color: #c8a6dc;}
+	84% {color: #dfdbd3;}}
+@-webkit-keyframes flora {
+	0% {color: #dfdbd3;}
+	14% {color: #dfdbd3;}
+	28% {color: #dfdbd3;}
+	42% {color: #dfdbd3;}
+	56% {color: #dfdbd3;}
+	70% {color: #c8a6dc;}
+	84% {color: #dfdbd3;}}
+@keyframes flora {
+	0% {color: #dfdbd3;}
+	14% {color: #dfdbd3;}
+	28% {color: #dfdbd3;}
+	42% {color: #dfdbd3;}
+	56% {color: #dfdbd3;}
+	70% {color: #c8a6dc;}
+	84% {color: #dfdbd3;}}
 
 ul li #food {
 	-o-animation-name: food;
@@ -280,28 +415,36 @@ ul li #food {
 
 @-o-keyframes food {
 	0% {color: #dfdbd3;}
-	20% {color: #dfdbd3;}
-	40% {color: #dfdbd3;}
-	60% {color: #dfdbd3;}
-	80% {color: #e6dd8f;}}
+	14% {color: #dfdbd3;}
+	28% {color: #dfdbd3;}
+	42% {color: #dfdbd3;}
+	56% {color: #dfdbd3;}
+	70% {color: #dfdbd3;}
+	84% {color: #e6dd8f;}}
 @-moz-keyframes food {
 	0% {color: #dfdbd3;}
-	20% {color: #dfdbd3;}
-	40% {color: #dfdbd3;}
-	60% {color: #dfdbd3;}
-	80% {color: #e6dd8f;}}
+	14% {color: #dfdbd3;}
+	28% {color: #dfdbd3;}
+	42% {color: #dfdbd3;}
+	56% {color: #dfdbd3;}
+	70% {color: #dfdbd3;}
+	84% {color: #e6dd8f;}}
 @-webkit-keyframes food {
 	0% {color: #dfdbd3;}
-	20% {color: #dfdbd3;}
-	40% {color: #dfdbd3;}
-	60% {color: #dfdbd3;}
-	80% {color: #e6dd8f;}}
+	14% {color: #dfdbd3;}
+	28% {color: #dfdbd3;}
+	42% {color: #dfdbd3;}
+	56% {color: #dfdbd3;}
+	70% {color: #dfdbd3;}
+	84% {color: #e6dd8f;}}
 @keyframes food {
 	0% {color: #dfdbd3;}
-	20% {color: #dfdbd3;}
-	40% {color: #dfdbd3;}
-	60% {color: #dfdbd3;}
-	80% {color: #e6dd8f;}}
+	14% {color: #dfdbd3;}
+	28% {color: #dfdbd3;}
+	42% {color: #dfdbd3;}
+	56% {color: #dfdbd3;}
+	70% {color: #dfdbd3;}
+	84% {color: #e6dd8f;}}
 
 .footer {
 	margin-top: 3em;
