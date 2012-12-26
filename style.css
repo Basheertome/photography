@@ -42,6 +42,7 @@ p {
 }
 
 ul {
+	max-width: 900px;
 	font-family: "raleway", sans-serif;
 	font-size: 3em;
 	font-weight: 100;
@@ -50,11 +51,11 @@ ul {
 }
 
 ul li {
-	display: block;
+	display: inline-block;
 }
 
 ul li a {
-	font-size: 2em;
+	font-size: 3em;
 	text-shadow: 0 0 1px #fff;
 	color: #dfdbd3;
 	text-decoration: none;
@@ -476,6 +477,9 @@ ul li #food {
 @media (max-width: 430px) {
 	
 	ul {
-		font-size: 2em;
+		font-size: 1.5em;
+	}
+	ul li {
+		display: block;
 	}
 }
