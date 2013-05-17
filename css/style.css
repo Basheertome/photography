@@ -256,7 +256,7 @@ h1 a:active {
 .navigation li #love:hover {color: #e68f8f;}
 .navigation li #flora:hover {color: #c8a6dc;}
 .navigation li #food:hover {color: #e6dd8f;}
-.navigation li #about:hover {color: #ccc;}
+.navigation li #daily:hover {color: #888;}
 
 .navigation > #new {color: #86d8d1;}
 .navigation > #life {color: #c8e68f;}
@@ -265,7 +265,7 @@ h1 a:active {
 .navigation > #love {color: #e68f8f;}
 .navigation > #flora {color: #c8a6dc;}
 .navigation > #food {color: #e6dd8f;}
-.navigation > #about {color: #ccc;}
+.navigation > #daily {color: #888;}
 
 #photos {
 	position: relative;
