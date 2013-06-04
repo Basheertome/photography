@@ -275,9 +275,17 @@ h1 a:active {
 	height: 450px;
 }
 
+#photos a {
+	display: block;
+	-moz-box-shadow: inset 9px 8px 0 #f3f3f3, inset -8px -8px 0 #f3f3f3;
+	-webkit-box-shadow: inset 9px 8px 0 #f3f3f3, inset -8px -8px 0 #f3f3f3;
+	box-shadow: inset 9px 8px 0 #f3f3f3, inset -8px -8px 0 #f3f3f3;
+	margin-right: 10px;
+	height: 427px;
+}
+
 #photos img {
 	height: 427px;
-	margin-right: 10px;
 }
 
 #photos table {
