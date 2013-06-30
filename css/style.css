@@ -437,6 +437,7 @@ keyframes notice {
 		display: block;
 		margin-right: 10px;
 		margin-bottom: 10px;
+		height: auto;
 	}
 	#photos img {
 		display: block;
@@ -463,6 +464,7 @@ keyframes notice {
 	}
 	#photos td a {
 		margin-right: 0;
+		height: auto;
 	}
 }
 
