@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html class="life" lang="en">
+<html class="series" lang="en">
 <head>
     <meta charset="utf-8" />
-	<title>Life | Photography | Basheer Tome</title>
+	<title>Series | Photography | Basheer Tome</title>
 	<meta name="description" content="Photography that explores nostalgia through slices of life." />
 	<meta name="keywords" content="photography, interaction, industrial, design, user experience, basheer, tome, san, francisco, california" /> 
 	<link rel="shortcut icon" href="../favicon.ico" />
@@ -28,18 +28,17 @@
 	function jsonFlickrApi(rsp) {
 	 if (rsp.stat != "ok"){return;}
 	 var s = new Array();
-	 for (var i=0; i < rsp.photoset.photo.length; i++) {
-	  photo = rsp.photoset.photo[ i ];
-	  if ((photo.o_width / photo.o_height) > 1.8 || (photo.o_width / photo.o_height) < 1.3) {
-		p_vert = ' class="vertical"';
-	  } else {p_vert = '';}
-	  t_url = "http://farm" + photo.farm + ".static.flickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_z" + ".jpg"; 
-	  p_url = "http://www.flickr.com/photos/basheertome/" + photo.id;
-	  s.push('<td title="' + photo.title + '"' + p_vert + '><a href="' + p_url + '"><img src="' + t_url + '" alt="' + photo.title + '" id="' + photo.id + '" /></a></td>');
+	 console.log(rsp.collections);
+	 for (var i=0; i < rsp.collections.collection[0].set.length; i++) {
+	  set = rsp.collections.collection[0].set[ i ];
+	  s_id = set.id;
+	  s_title = set.title.split(':')[0];
+	  s_url = "http://www.flickr.com/photos/basheertome/sets/" + s_id;
+	  s.push('<li id="' + s_id + '">' + s_title + '</li>');
 	 }
 	 s.reverse();
 	 for (var i=0; i < s.length; i++) {
-	     document.writeln(s[i]);
+	     $(s[i]).appendTo('#collections, #top-collections ul');
 	 }
 	}
 	</script>
@@ -81,18 +80,50 @@
 	
 <ul class="navigation">
 	<li><a id="new" href="/">new</a></li>
-	<li id="life">life</li>
+	<li><a id="life" href="/life">life</a></li>
 	<li><a id="land" href="/land">land</a></li>
 	<li><a id="travel" href="/travel">travel</a></li>
 	<li><a id="love" href="/love">love</a></li>
 	<li><a id="flora" href="/flora">flora</a></li>
 	<li><a id="food" href="/food">food</a></li>
-	<li><a id="series" href="/series">series</a></li>
+	<li id="series">series</li>
 </ul>
 
-<div id="photos"><table><tr>
-	<td id="scroll"><span>scroll <span>&#8677;</span></span></td>
-	<script type="text/javascript" language="javascript" src="http://api.flickr.com/services/rest/?format=json&method=flickr.photosets.getPhotos&photoset_id=72157629250389690&media=photos&api_key=9741a22f899708369501d59bfaa1b26a&extras=o_dims"></script>
+<div id="top-collections"><table><tr><ul></ul></tr></table></div>
+
+<div id="photos" style="display: none"><table><tr></tr></table></div>
+
+<div id="collections"><table><tr>
+	<ul><script type="text/javascript" language="javascript" src="http://api.flickr.com/services/rest/?format=json&method=flickr.collections.getTree&user_id=10019047@N05&collection_id=72157644079409166&api_key=9741a22f899708369501d59bfaa1b26a"></script></ul>
+	<script type="text/javascript" language="javascript">
+		$('#collections li, #top-collections li').click(function(event) {
+			$('#photos').html('<td id="scroll"><span>scroll <span>&#8677;</span></span></td>');
+	      loadFlickrSet($(this).attr('id'));
+	      $('html, body').animate({scrollTop: "0"}, function() {
+	      	$('#photos:hidden').slideDown();
+	      });
+	    });
+
+		function loadFlickrSet(s_id) {
+			$.getJSON('http://api.flickr.com/services/rest/?format=json&method=flickr.photosets.getPhotos&photoset_id=' + s_id + '&media=photos&api_key=9741a22f899708369501d59bfaa1b26a&extras=o_dims&nojsoncallback=1', function(data) {
+				if (data.stat != "ok"){return;}
+				var s = new Array();
+				$.each(data.photoset.photo, function(i,item){
+					photo = data.photoset.photo[ i ];
+					if ((photo.o_width / photo.o_height) > 1.8 || (photo.o_width / photo.o_height) < 1.3) {
+					p_vert = ' class="vertical"';
+					} else {p_vert = '';}
+					t_url = "http://farm" + photo.farm + ".static.flickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_z" + ".jpg"; 
+					p_url = "http://www.flickr.com/photos/basheertome/" + photo.id;
+					s.push('<td title="' + photo.title + '"' + p_vert + '><a href="' + p_url + '"><img src="' + t_url + '" alt="' + photo.title + '" id="' + photo.id + '" /></a></td>');
+				});
+				s.reverse();
+				for (var i=0; i < s.length; i++) {
+				    $(s[i]).appendTo('#photos');
+				}
+			});
+		}
+	</script>
 </tr></table></div>
 
 <div class="footer">&copy; Copyright 2011-2012 <a href="http://basheertome.com/">Basheer Tome</a>. Follow him on <a href="http://www.flickr.com/photos/basheertome">Flickr</a>.</div>

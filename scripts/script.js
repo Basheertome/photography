@@ -2,12 +2,12 @@ $(document).ready(function(){
 	$('#photos').scroll(function(event) { 
       $("#scroll").fadeOut();
     });
-	$('#scroll').click(function(event) { 
-	  $('#photos').animate({scrollLeft: "+=200"});
-      $(this).fadeOut();
-    });
+    $('#photos').on('click', '#scroll', function() {
+    	$('#photos').animate({scrollLeft: "+=200"});
+    	$('#scroll').fadeOut();
+    })
 
-	$('#photos td a').click(function(event) { 
+    $('#photos').on('click', 'td a', function(event){
 		if ($(window).width() > 640) {
 		      event.preventDefault();
 		      b_url = $(this).children().attr('src').slice(0,-5) + 'b.jpg';
