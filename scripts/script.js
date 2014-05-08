@@ -15,7 +15,7 @@ $(document).ready(function(){
 		      $('.preview .info #title').html(p_title).attr('href', 'http://www.flickr.com/photos/basheertome/' + $(this).children().attr('id'));
 		      $('.preview span > img').attr({'src' : b_url, 'id' : $(this).children().attr('id'), 'style' : 'max-height: ' + $(window).height() + 'px'});
 		      $('.preview .info #exif').html("");
-		      $.getJSON('http://api.flickr.com/services/rest/?format=json&method=flickr.photos.getExif&api_key=9741a22f899708369501d59bfaa1b26a&format=json&nojsoncallback=1&photo_id=' + $(this).children().attr('id'), function(data) {
+		      $.getJSON('https://api.flickr.com/services/rest/?format=json&method=flickr.photos.getExif&api_key=9741a22f899708369501d59bfaa1b26a&format=json&nojsoncallback=1&photo_id=' + $(this).children().attr('id'), function(data) {
 				var p_lens;
 		      	$.each(data.photo.exif, function(i,item){
 		      	  switch(item.tag) {
@@ -104,7 +104,7 @@ function nextImage() {
 	      $('.preview .info #title').html(p_title).attr('href', 'http://www.flickr.com/photos/basheertome/' + n_photo.attr('id'));
 	      $('.preview span > img').attr({'src' : b_url, 'style' : 'max-height: ' + $(window).height() + 'px'});
 	      $('.preview .info #exif').html("");
-	      $.getJSON('http://api.flickr.com/services/rest/?format=json&method=flickr.photos.getExif&api_key=9741a22f899708369501d59bfaa1b26a&format=json&nojsoncallback=1&photo_id=' + n_photo.attr('id'), function(data) {
+	      $.getJSON('https://api.flickr.com/services/rest/?format=json&method=flickr.photos.getExif&api_key=9741a22f899708369501d59bfaa1b26a&format=json&nojsoncallback=1&photo_id=' + n_photo.attr('id'), function(data) {
 			var p_lens;
 	      	$.each(data.photo.exif, function(i,item){
 	      	  switch(item.tag) {
@@ -144,7 +144,7 @@ function previousImage() {
 	      $('.preview .info #title').html(p_title).attr('href', 'http://www.flickr.com/photos/basheertome/' + p_photo.attr('id'));
 	      $('.preview span > img').attr({'src' : b_url, 'style' : 'max-height: ' + $(window).height() + 'px'});
 	      $('.preview .info #exif').html("");
-	      $.getJSON('http://api.flickr.com/services/rest/?format=json&method=flickr.photos.getExif&api_key=9741a22f899708369501d59bfaa1b26a&format=json&nojsoncallback=1&photo_id=' + p_photo.attr('id'), function(data) {
+	      $.getJSON('https://api.flickr.com/services/rest/?format=json&method=flickr.photos.getExif&api_key=9741a22f899708369501d59bfaa1b26a&format=json&nojsoncallback=1&photo_id=' + p_photo.attr('id'), function(data) {
 			var p_lens;
 	      	$.each(data.photo.exif, function(i,item){
 	      	  switch(item.tag) {

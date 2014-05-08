@@ -18,7 +18,7 @@
 	<link rel="apple-touch-startup-image" href="../images/touch/startup-ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" />
 	<link rel="apple-touch-startup-image" href="../images/touch/startup-retina.png" media="screen and (max-device-width: 480px) and (min-device-pixel-ratio: 2)" />
 	<link rel="apple-touch-startup-image" href="../images/touch/startup.png" media="screen and (max-device-width: 320px)" />
-	<link href='http://api.flickr.com/services/feeds/photos_public.gne?id=10019047@N05&lang=en-us&format=rss_200' rel='alternate' type='application/atom+xml' />
+	<link href='https://api.flickr.com/services/feeds/photos_public.gne?id=10019047@N05&lang=en-us&format=rss_200' rel='alternate' type='application/atom+xml' />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 	<script src="../scripts/jquery.hotkeys.js"></script>
 	<script src="../scripts/script.js"></script>
@@ -94,7 +94,7 @@
 <div id="photos" style="display: none"><table><tr></tr></table></div>
 
 <div id="collections"><table><tr>
-	<ul><script type="text/javascript" language="javascript" src="http://api.flickr.com/services/rest/?format=json&method=flickr.collections.getTree&user_id=10019047@N05&collection_id=72157644079409166&api_key=9741a22f899708369501d59bfaa1b26a"></script></ul>
+	<ul><script type="text/javascript" language="javascript" src="https://api.flickr.com/services/rest/?format=json&method=flickr.collections.getTree&user_id=10019047@N05&collection_id=72157644079409166&api_key=9741a22f899708369501d59bfaa1b26a"></script></ul>
 	<script type="text/javascript" language="javascript">
 		$('#collections li, #top-collections li').click(function(event) {
 			$('#photos').html('<td id="scroll"><span>scroll <span>&#8677;</span></span></td>');
@@ -105,7 +105,7 @@
 	    });
 
 		function loadFlickrSet(s_id) {
-			$.getJSON('http://api.flickr.com/services/rest/?format=json&method=flickr.photosets.getPhotos&photoset_id=' + s_id + '&media=photos&api_key=9741a22f899708369501d59bfaa1b26a&extras=o_dims&nojsoncallback=1', function(data) {
+			$.getJSON('https://api.flickr.com/services/rest/?format=json&method=flickr.photosets.getPhotos&photoset_id=' + s_id + '&media=photos&api_key=9741a22f899708369501d59bfaa1b26a&extras=o_dims&nojsoncallback=1', function(data) {
 				if (data.stat != "ok"){return;}
 				var s = new Array();
 				$.each(data.photoset.photo, function(i,item){
