@@ -1,40 +1,40 @@
 <!DOCTYPE html>
-<html class="new" lang="en">
+<html class="life" lang="en">
 <head>
     <meta charset="utf-8" />
-	<title>Photography | Basheer Tome</title>
+	<title>Mobile | Photography | Basheer Tome</title>
 	<meta name="description" content="Photography that explores nostalgia through slices of life." />
 	<meta name="keywords" content="photography, interaction, industrial, design, user experience, basheer, tome, san, francisco, california" /> 
-	<link rel="shortcut icon" href="favicon.ico" />
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+	<link rel="shortcut icon" href="../favicon.ico" />
+    <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" />
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
 	<meta name="apple-mobile-web-app-capable" content="yes" /> 
 	<meta name="apple-touch-fullscreen" content="yes" />
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/touch/apple-touch-icon-144x144-precomposed.png" />
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/touch/apple-touch-icon-114x114-precomposed.png" />
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/touch/apple-touch-icon-72x72-precomposed.png" />
-	<link rel="apple-touch-icon-precomposed" href="images/touch/apple-touch-icon-precomposed.png" />
-	<link rel="apple-touch-startup-image" href="images/touch/startup-ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" />
-	<link rel="apple-touch-startup-image" href="images/touch/startup-ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" />
-	<link rel="apple-touch-startup-image" href="images/touch/startup-retina.png" media="screen and (max-device-width: 480px) and (min-device-pixel-ratio: 2)" />
-	<link rel="apple-touch-startup-image" href="images/touch/startup.png" media="screen and (max-device-width: 320px)" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../images/touch/apple-touch-icon-144x144-precomposed.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../images/touch/apple-touch-icon-114x114-precomposed.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../images/touch/apple-touch-icon-72x72-precomposed.png" />
+	<link rel="apple-touch-icon-precomposed" href="../images/touch/apple-touch-icon-precomposed.png" />
+	<link rel="apple-touch-startup-image" href="../images/touch/startup-ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" />
+	<link rel="apple-touch-startup-image" href="../images/touch/startup-ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" />
+	<link rel="apple-touch-startup-image" href="../images/touch/startup-retina.png" media="screen and (max-device-width: 480px) and (min-device-pixel-ratio: 2)" />
+	<link rel="apple-touch-startup-image" href="../images/touch/startup.png" media="screen and (max-device-width: 320px)" />
 	<link href='https://api.flickr.com/services/feeds/photos_public.gne?id=10019047@N05&lang=en-us&format=rss_200' rel='alternate' type='application/atom+xml' />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-	<script src="scripts/jquery.hotkeys.js"></script>
-	<script src="scripts/script.js"></script>
+	<script src="../scripts/jquery.hotkeys.js"></script>
+	<script src="../scripts/mobile.js"></script>
 	<script type="text/javascript" src="http://use.typekit.com/mqn7hlv.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	<script type="text/javascript" language="javascript">
 	function jsonFlickrApi(rsp) {
 	 if (rsp.stat != "ok"){return;}
 	 var s = new Array();
-	 for (var i=31; i >= 0; i--) {
+	 for (var i=rsp.photos.total-1; i >= 0; i--) {
 	  photo = rsp.photos.photo[ i ];
 	  if ((photo.o_width / photo.o_height) > 1.8 || (photo.o_width / photo.o_height) < 1.3) {
 		p_vert = ' class="vertical"';
 	  } else {p_vert = '';}
 	  t_url = "http://farm" + photo.farm + ".static.flickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_z" + ".jpg";
-	  p_url = "http://www.flickr.com/photos/basheertome/" + photo.id;
+	  p_url = "http://www.flickr.com/photos/basheeriphone/" + photo.id;
 	  s.push('<td title="' + photo.title + '"' + p_vert + '><a href="' + p_url + '"><img src="' + t_url + '" alt="' + photo.title + '" id="' + photo.id + '" /></a></td>');
 	 }
 	 s.reverse();
@@ -59,7 +59,7 @@
 	</script>
 </head>
 <body>
-
+	
 <div class="preview"><span>
 	<span>
 		<img src="" />
@@ -69,8 +69,8 @@
 		</div>
 	</span>
 	<div class="toolbar">
-		<p id="close"><img src="images/close.png" width="16px" height="16px" alt="x" /></p>
-		<p id="fullscreen"><img src="images/fullscreen.png" width="16px" height="16px" alt="full" /></p>
+		<p id="close"><img src="../images/close.png" width="16px" height="16px" alt="x" /></p>
+		<p id="fullscreen"><img src="../images/fullscreen.png" width="16px" height="16px" alt="full" /></p>
 	</div>
 	<div class="previous"><a href="#"><div> ⇤</div></a></div>
 	<div class="next"><a href="#"><div> ⇥</div></a></div>
@@ -80,7 +80,7 @@
 <h1><a href="http://basheertome.com/">Basheer Tome</a></h1>
 	
 <ul class="navigation">
-	<li id="new">new</li>
+	<li><a id="new" href="/">new</a></li>
 	<li><a id="life" href="/life">life</a></li>
 	<li><a id="land" href="/land">land</a></li>
 	<li><a id="travel" href="/travel">travel</a></li>
@@ -88,12 +88,12 @@
 	<li><a id="flora" href="/flora">flora</a></li>
 	<li><a id="food" href="/food">food</a></li>
 	<li><a id="series" href="/series">series</a></li>
-	<li><a id="series" href="/mobile">mobile</a></li>
+	<li id="series">mobile</li>
 </ul>
 
 <div id="photos"><table><tr>
 	<td id="scroll"><span>scroll <span>&#8677;</span></span></td>
-	<script type="text/javascript" language="javascript" src="https://api.flickr.com/services/rest/?format=json&method=flickr.photos.search&user_id=10019047@N05&media=photos&api_key=9741a22f899708369501d59bfaa1b26a&extras=o_dims"></script>
+	<script type="text/javascript" language="javascript" src="https://api.flickr.com/services/rest/?format=json&method=flickr.photos.search&user_id=125899936@N07&media=photos&api_key=af7d57f2c3bda1cd59bdd889aae7486f&extras=o_dims"></script>
 </tr></table></div>
 
 <div class="footer">&copy; Copyright 2011-2012 <a href="http://basheertome.com/">Basheer Tome</a>. Follow him on <a href="http://www.flickr.com/photos/basheertome">Flickr</a>.</div>
