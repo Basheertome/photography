@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="life" lang="en">
+<html class="mobile" lang="en">
 <head>
     <meta charset="utf-8" />
 	<title>Mobile | Photography | Basheer Tome</title>
@@ -35,7 +35,7 @@
 	  } else {p_vert = '';}
 	  t_url = "http://farm" + photo.farm + ".static.flickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_z" + ".jpg";
 	  p_url = "http://www.flickr.com/photos/basheeriphone/" + photo.id;
-	  s.push('<td title="' + photo.title + '"' + p_vert + '><a href="' + p_url + '"><img src="' + t_url + '" alt="' + photo.title + '" id="' + photo.id + '" /></a></td>');
+	  s.push('<td title="' + photo.id + '"' + p_vert + '><a href="' + p_url + '"><img src="' + t_url + '" alt="' + photo.id + '" id="' + photo.id + '" /></a></td>');
 	 }
 	 s.reverse();
 	 for (var i=0; i < s.length; i++) {
@@ -62,7 +62,9 @@
 	
 <div class="preview"><span>
 	<span>
-		<img src="" />
+		<a href="" target="_blank">
+			<img src="" />
+		</a>
 		<div class="info">
 			<a href="" id="title" target="_blank"></a>
 			<p id="exif"></p>
@@ -88,7 +90,7 @@
 	<li><a id="flora" href="/flora">flora</a></li>
 	<li><a id="food" href="/food">food</a></li>
 	<li><a id="series" href="/series">series</a></li>
-	<li id="series">mobile</li>
+	<li id="mobile">mobile</li>
 </ul>
 
 <div id="photos"><table><tr>

@@ -13,27 +13,8 @@ $(document).ready(function(){
 		      b_url = $(this).children().attr('src').slice(0,-5) + 'b.jpg';
 		      p_title = $(this).children().attr('alt');
 		      $('.preview .info #title').html(p_title).attr('href', 'http://www.flickr.com/photos/basheeriphone/' + $(this).children().attr('id'));
-		      $('.preview span > img').attr({'src' : b_url, 'id' : $(this).children().attr('id'), 'style' : 'max-height: ' + $(window).height()*.75 + 'px'});
-		      $('.preview .info #exif').html("");
-		      $.getJSON('https://api.flickr.com/services/rest/?format=json&method=flickr.photos.getExif&api_key=af7d57f2c3bda1cd59bdd889aae7486f&format=json&nojsoncallback=1&photo_id=' + $(this).children().attr('id'), function(data) {
-				var p_lens;
-		      	$.each(data.photo.exif, function(i,item){
-		      	  switch(item.tag) {
-				    case "Lens":
-				      p_lens = item.raw._content;
-				      break;	
-				    case "LensModel":
-				      p_lens = item.raw._content;
-				      break;			
-		      	}
-		    if (typeof p_lens === 'undefined') {
-          $('.preview .info #exif').html(data.photo.camera.replace(" EOS", ""));
-        }
-        else {
-          $('.preview .info #exif').html(data.photo.camera.replace(" EOS", "") + ' + ' + p_lens);
-        }
-			  });
-			    });
+		      $('.preview span > a img').attr({'src' : b_url, 'id' : $(this).children().attr('id'), 'style' : 'max-height: ' + $(window).height()*.75 + 'px'});
+		      $('.preview span > a').attr('href', $('.preview .info #title').attr('href'));
 		      $('.preview').css('display', 'table');
 		      $('.preview').animate({opacity: 1}, 150);
 		}
@@ -102,27 +83,8 @@ function nextImage() {
 	      b_url = n_photo.attr('src').slice(0,-5) + 'b.jpg';
 	      p_title = n_photo.attr('alt');
 	      $('.preview .info #title').html(p_title).attr('href', 'http://www.flickr.com/photos/basheeriphone/' + n_photo.attr('id'));
-	      $('.preview span > img').attr({'src' : b_url, 'style' : 'max-height: ' + $(window).height()*.75 + 'px'});
-	      $('.preview .info #exif').html("");
-	      $.getJSON('https://api.flickr.com/services/rest/?format=json&method=flickr.photos.getExif&api_key=af7d57f2c3bda1cd59bdd889aae7486f&format=json&nojsoncallback=1&photo_id=' + n_photo.attr('id'), function(data) {
-			var p_lens;
-	      	$.each(data.photo.exif, function(i,item){
-	      	  switch(item.tag) {
-			    case "Lens":
-			      p_lens = item.raw._content;
-			      break;	
-			    case "LensModel":
-			      p_lens = item.raw._content;
-			      break;			
-	      	  }
-    	if (typeof p_lens === 'undefined') {
-        $('.preview .info #exif').html(data.photo.camera.replace(" EOS", ""));
-      }
-      else {
-        $('.preview .info #exif').html(data.photo.camera.replace(" EOS", "") + ' + ' + p_lens);
-      }
-		  });
-		    });
+	      $('.preview span > a img').attr({'src' : b_url, 'style' : 'max-height: ' + $(window).height()*.75 + 'px'});
+	      $('.preview span > a').attr('href', $('.preview .info #title').attr('href'));
 	      $('.preview').css('display', 'table');
 	      $('.preview').animate({opacity: 1}, 150);
 	}
@@ -142,27 +104,8 @@ function previousImage() {
 	      b_url = p_photo.attr('src').slice(0,-5) + 'b.jpg';
 	      p_title = p_photo.attr('alt');
 	      $('.preview .info #title').html(p_title).attr('href', 'http://www.flickr.com/photos/basheeriphone/' + p_photo.attr('id'));
-	      $('.preview span > img').attr({'src' : b_url, 'style' : 'max-height: ' + $(window).height()*.75 + 'px'});
-	      $('.preview .info #exif').html("");
-	      $.getJSON('https://api.flickr.com/services/rest/?format=json&method=flickr.photos.getExif&api_key=af7d57f2c3bda1cd59bdd889aae7486f&format=json&nojsoncallback=1&photo_id=' + p_photo.attr('id'), function(data) {
-			var p_lens;
-	      	$.each(data.photo.exif, function(i,item){
-	      	  switch(item.tag) {
-			    case "Lens":
-			      p_lens = item.raw._content;
-			      break;	
-			    case "LensModel":
-			      p_lens = item.raw._content;
-			      break;			
-	      	  }
-			if (typeof p_lens === 'undefined') {
-        $('.preview .info #exif').html(data.photo.camera.replace(" EOS", ""));
-      }
-      else {
-        $('.preview .info #exif').html(data.photo.camera.replace(" EOS", "") + ' + ' + p_lens);
-      }
-		  });
-		    });
+	      $('.preview span > a img').attr({'src' : b_url, 'style' : 'max-height: ' + $(window).height()*.75 + 'px'});
+	      $('.preview span > a').attr('href', $('.preview .info #title').attr('href'));
 	      $('.preview').css('display', 'table');
 	      $('.preview').animate({opacity: 1}, 150);
 	}

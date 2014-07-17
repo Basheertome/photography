@@ -11,7 +11,8 @@ html.travel {box-shadow: inset 0 0 5px #68bdff;}
 html.love {box-shadow: inset 0 0 5px #e68f8f;}
 html.flora {box-shadow: inset 0 0 5px #c8a6dc;}
 html.food {box-shadow: inset 0 0 5px #e6dd8f;}
-html.series {box-shadow: inset 0 0 5px #aaa;}
+html.series,
+html.mobile {box-shadow: inset 0 0 5px #aaa;}
 
 body {
 	background: #fff;
@@ -109,6 +110,10 @@ body {
 	float: right;
 	color: #aaa;
 	text-align: right;
+}
+
+html.mobile .preview .info {
+	display: none;
 }
 
 .preview .toolbar {
@@ -257,7 +262,8 @@ h1 a:active {
 .navigation li #love:hover {color: #e68f8f;}
 .navigation li #flora:hover {color: #c8a6dc;}
 .navigation li #food:hover {color: #e6dd8f;}
-.navigation li #series:hover {color: #888;}
+.navigation li #series:hover,
+.navigation li #mobile:hover {color: #888;}
 
 .navigation > #new {color: #86d8d1;}
 .navigation > #life {color: #c8e68f;}
@@ -266,7 +272,8 @@ h1 a:active {
 .navigation > #love {color: #e68f8f;}
 .navigation > #flora {color: #c8a6dc;}
 .navigation > #food {color: #e6dd8f;}
-.navigation > #series {color: #888;}
+.navigation > #series,
+.navigation > #mobile {color: #888;}
 
 #photos {
 	position: relative;
