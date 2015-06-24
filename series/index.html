@@ -100,7 +100,12 @@
 		$('#collections li, #top-collections li').click(function(event) {
 			$('#photos').html('<td id="scroll"><span>scroll <span>&#8677;</span></span></td>');
 	      loadFlickrSet($(this).attr('id'));
-	      $('html, body').animate({scrollTop: "0"}, function() {
+	      if ($('#top-collections').is(":visible")) {
+	      	var scrollTo = $('#top-collections').offset().top + $('#top-collections').height();
+	      } else {
+	      	var scrollTo = 0;
+	      }
+	      $('html, body').animate({scrollTop: scrollTo}, function() {
 	      	$('#photos:hidden').slideDown();
 	      });
 	    });
