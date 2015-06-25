@@ -4,25 +4,61 @@ ol,ul { list-style: none; }
 img {border: 0;}
 
 html {min-height: 100%;}
-html.new {box-shadow: inset 0 0 5px #86d8d1;}
-html.life {box-shadow: inset 0 0 5px #c8e68f;}
-html.land {box-shadow: inset 0 0 5px #f7c78e;}
-html.travel {box-shadow: inset 0 0 5px #68bdff;}
-html.love {box-shadow: inset 0 0 5px #e68f8f;}
-html.flora {box-shadow: inset 0 0 5px #c8a6dc;}
-html.food {box-shadow: inset 0 0 5px #e6dd8f;}
-html.series,
-html.mobile {box-shadow: inset 0 0 5px #aaa;}
 
 body {
-	background: #fff;
 	padding: 50px;
-	font-family: "myriad-pro", sans-serif;
+	font-family: 'karbonregular', sans-serif;
 	-o-font-smoothing: antialiased;
 	-moz-font-smoothing: antialiased;
 	-webkit-font-smoothing: antialiased;
 	font-smoothing: antialiased;
 }
+
+@font-face {
+    font-family: 'karbonregular';
+    src: url('../fonts/karbon-regular-webfont.eot');
+    src: url('../fonts/karbon-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/karbon-regular-webfont.woff') format('woff'),
+         url('../fonts/karbon-regular-webfont.ttf') format('truetype'),
+         url('../fonts/karbon-regular-webfont.svg#karbonregular') format('svg');
+    font-weight: normal;
+    font-style: normal; }
+@font-face {
+    font-family: 'karbonsemibold';
+    src: url('../fonts/karbon-semibold-webfont.eot');
+    src: url('../fonts/karbon-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/karbon-semibold-webfont.woff') format('woff'),
+         url('../fonts/karbon-semibold-webfont.ttf') format('truetype'),
+         url('../fonts/karbon-semibold-webfont.svg#karbonsemibold') format('svg');
+    font-weight: normal;
+    font-style: normal; }
+@font-face {
+    font-family: 'karbonlight';
+    src: url('../fonts/karbon-light-webfont.eot');
+    src: url('../fonts/karbon-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/karbon-light-webfont.woff') format('woff'),
+         url('../fonts/karbon-light-webfont.ttf') format('truetype'),
+         url('../fonts/karbon-light-webfont.svg#karbonlight') format('svg');
+    font-weight: normal;
+    font-style: normal; }
+@font-face {
+    font-family: 'karbonthin';
+    src: url('../fonts/karbon-thin-webfont.eot');
+    src: url('../fonts/karbon-thin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/karbon-thin-webfont.woff') format('woff'),
+         url('../fonts/karbon-thin-webfont.ttf') format('truetype'),
+         url('../fonts/karbon-thin-webfont.svg#karbonthin') format('svg');
+    font-weight: normal;
+    font-style: normal; }
+@font-face {
+    font-family: 'karbonhairline';
+    src: url('../fonts/karbon-hairline-webfont.eot');
+    src: url('../fonts/karbon-hairline-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/karbon-hairline-webfont.woff') format('woff'),
+         url('../fonts/karbon-hairline-webfont.ttf') format('truetype'),
+         url('../fonts/karbon-hairline-webfont.svg#karbonhairline') format('svg');
+    font-weight: normal;
+    font-style: normal; }
 
 .preview {
 	display: none;
@@ -33,7 +69,7 @@ body {
 	z-index: 2;
 	width: 100%;
 	height: 100%;
-	background: rgba(255,255,255,.78)  no-repeat center center fixed;
+	background: rgba(0,0,0,.3)  no-repeat center center fixed;
 	-o-background-size: cover;
 	-moz-background-size: cover;
 	-webkit-background-size: cover;
@@ -86,29 +122,31 @@ body {
 
 .preview .info {
 	background: #fff;
+	font-size: 1.15em;
 }
 
 .preview .info p, .preview .info a {
 	display: inline-block;
 	background: #fff;
-	font-family: "myriad-pro", sans-serif;
-	font-weight: 400;
+	font-family: 'karbonregular', sans-serif;
 	text-decoration: none;
 	padding: .75em 1.2em;
 }
 
-.preview .info a:active {
+.preview .info #title {
+	color: #000;
+	background: none;
+	text-decoration: none;
+}
+
+.preview .info #title:active {
 	position: relative;
 	top: 1px;
 }
 
-.preview .info #title {
-	color: #333;
-}
-
 .preview .info #exif {
 	float: right;
-	color: #aaa;
+	color: #777;
 	text-align: right;
 }
 
@@ -125,10 +163,10 @@ html.mobile .preview .info {
 
 .preview .toolbar p {
 	display: inline-block;
-	padding: .6em;
+	padding: .65em .6em .55em .6em;
 	margin: .6em;
 	cursor: pointer;
-	background: rgba(255,255,255,.78);
+	background: rgba(0,0,0,.3);
 	border-radius: 1em;
 	line-height: 1em;
 }
@@ -138,13 +176,12 @@ html.mobile .preview .info {
 	vertical-align: bottom;
 }
 
-.preview .toolbar img:active {
-	position: relative;
-	top: 1px;
-}
-
 .preview .toolbar #close {
 	float: right;
+}
+
+.preview .toolbar #fullscreen {
+	padding: .62em .65em .58em .62em;
 }
 
 .preview .close {
@@ -170,7 +207,7 @@ html.mobile .preview .info {
 	vertical-align: middle;
 	height: 100%;
 	padding: 0 1em;
-	color: #000;
+	color: #fff;
 	border: 0;
 	line-height: 1em;
 	text-decoration: none;
@@ -180,14 +217,17 @@ html.mobile .preview .info {
 .preview .next {right: 0;}
 
 .preview .previous a div, .preview .next a div {
-	padding: .2em;
+	padding: .55em .5em .45em .5em;
 	cursor: pointer;
-	background: rgba(255,255,255,.78);
+	background: rgba(0,0,0,.3);
 	border-radius: 21px;
 	line-height: 21px;
 }
 
-.preview .previous:active a div, .preview:active .next a div {
+.preview .previous:active a div,
+.preview .next:active a div,
+.preview .toolbar #close:active,
+.preview .toolbar #fullscreen:active {
 	position: relative;
 	top: 1px;
 }
@@ -197,18 +237,22 @@ h1 {
 	top: 0;
 	right: 0;
 	z-index: 1;
-	font-weight: 100;
 }
 
 h1 a {
 	display: inline-block;
-	color: rgba(0,0,0,.4);
+	color: rgba(255,255,255,.5);
 	text-decoration: none;
-	padding: 1.2em;
+	padding: 25px;
+	line-height: 6px;
+	-o-transition: color .15s linear;
+	-moz-transition: color .15s linear;
+	-webkit-transition: color .15s linear;
+	transition: color .15s linear;
 }
 
 h1 a:hover {
-	opacity: .75;
+	color: rgba(255,255,255,1);
 }
 
 h1 a:active {
@@ -217,23 +261,24 @@ h1 a:active {
 }
 
 .navigation {
-	font-family: "raleway", sans-serif;
+	font-family: 'karbonthin', sans-serif;
+	text-transform: capitalize;
 	font-size: 5em;
-	font-weight: 100;
-	text-shadow: 0 0 -1px #fff;
 	color: #dfdbd3;
 }
 
 .navigation li {
 	display: inline-block;
+	position: relative;
 }
 
 .navigation li a {
-	font-family: "myriad-pro", sans-serif;
+	font-family: 'karbonregular', sans-serif;
+	text-transform: lowercase;
 	font-size: .2em;
-	font-weight: 400;
-	text-shadow: 0 0 1px #fff;
-	color: #dfdbd3;
+	color: #ccc;
+	letter-spacing: .5px;
+	margin-left: .15em;
 	text-decoration: none;
 	-o-transition: color .15s linear;
 	-moz-transition: color .15s linear;
@@ -241,6 +286,46 @@ h1 a:active {
 	transition: color .15s linear;
 	position: relative;
 	z-index: 1;
+}
+
+.navigation > #new,
+.navigation li #new:hover,
+.navigation > #life,
+.navigation li #life:hover,
+.navigation > #land,
+.navigation li #land:hover,
+.navigation > #travel,
+.navigation li #travel:hover,
+.navigation > #love,
+.navigation li #love:hover,
+.navigation > #flora,
+.navigation li #flora:hover,
+.navigation > #food,
+.navigation li #food:hover,
+.navigation > #series,
+.navigation li #series:hover,
+.navigation > #mobile,
+.navigation li #mobile:hover {
+	color: #fff;
+}
+
+.navigation > #new::after,
+.navigation > #life::after,
+.navigation > #land::after,
+.navigation > #travel::after,
+.navigation > #love::after,
+.navigation > #flora::after,
+.navigation > #food::after,
+.navigation > #series::after,
+.navigation > #mobile::after {
+  content: "";
+  position: absolute;
+  bottom: 14px; left: 1px;
+  width: 100%;
+  height: 3px;
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  transform: rotate(-3deg);
 }
 
 .navigation li a:hover {
@@ -255,25 +340,15 @@ h1 a:active {
 	top: 1px;
 }
 
-.navigation li #new:hover {color: #86d8d1;}
-.navigation li #life:hover {color: #c8e68f;}
-.navigation li #land:hover {color: #f7c78e;}
-.navigation li #travel:hover {color: #68bdff;}
-.navigation li #love:hover {color: #e68f8f;}
-.navigation li #flora:hover {color: #c8a6dc;}
-.navigation li #food:hover {color: #e6dd8f;}
-.navigation li #series:hover,
-.navigation li #mobile:hover {color: #888;}
-
-.navigation > #new {color: #86d8d1;}
-.navigation > #life {color: #c8e68f;}
-.navigation > #land {color: #f7c78e;}
-.navigation > #travel {color: #68bdff;}
-.navigation > #love {color: #e68f8f;}
-.navigation > #flora {color: #c8a6dc;}
-.navigation > #food {color: #e6dd8f;}
-.navigation > #series,
-.navigation > #mobile {color: #888;}
+.navigation > #new::after {background: rgba(255,13,5,1);}
+.navigation > #life::after {background: rgba(69,198,91,1);}
+.navigation > #land::after {background: rgba(255,228,50,1);}
+.navigation > #travel::after {background: rgba(0,73,215,1);}
+.navigation > #love::after {background: rgba(255,11,89,1);}
+.navigation > #flora::after {background: rgba(218,137,240,1);}
+.navigation > #food::after {background: rgba(251,136,50,1);}
+.navigation > #series::after {background: rgba(44,254,213,1);}
+.navigation > #mobile::after {background: rgba(199,243,111,1);}
 
 #photos {
 	position: relative;
@@ -285,9 +360,9 @@ h1 a:active {
 
 #photos a {
 	display: block;
-	-moz-box-shadow: inset 8px 8px 0 #f3f3f3, inset -8px -8px 0 #f3f3f3;
-	-webkit-box-shadow: inset 8px 8px 0 #f3f3f3, inset -8px -8px 0 #f3f3f3;
-	box-shadow: inset 8px 8px 0 #f3f3f3, inset -8px -8px 0 #f3f3f3;
+	-moz-box-shadow: inset 8px 8px 0 rgba(38,38,38,1), inset -8px -8px 0 rgba(38,38,38,1);
+	-webkit-box-shadow: inset 8px 8px 0 rgba(38,38,38,1), inset -8px -8px 0 rgba(38,38,38,1);
+	box-shadow: inset 8px 8px 0 rgba(38,38,38,1), inset -8px -8px 0 rgba(38,38,38,1);
 	margin-right: 10px;
 	height: 427px;
 }
@@ -315,7 +390,6 @@ h1 a:active {
 	position: relative;
 	right: 0;
 	display: table-cell;
-	font-weight: 100;
 	vertical-align: middle;
 	color: #fff;
 	font-size: 1.4em;
@@ -328,7 +402,7 @@ h1 a:active {
 
 #scroll span span {
 	font-size: 1.25em;
-	vertical-align: bottom;
+	vertical-align: middle;
 }
 
 #collections, #top-collections {
@@ -351,7 +425,6 @@ h1 a:active {
 	text-overflow: ellipsis;
 	font-size: 2.5em;
 	line-height: 1.5em;
-	font-weight: 100;
 	color: #9c9c9c;
 	cursor: pointer;
 	-moz-transition: color .15s linear;
@@ -359,7 +432,7 @@ h1 a:active {
 	transition: color .15s linear;
 }
 
-#top-collections li:hover, #collections li:hover { color: #86d8d1; }
+#top-collections li:hover, #collections li:hover { color: rgba(44,254,213,1); }
 
 #top-collections li:active, #collections li:active {
 	position: relative;
@@ -410,10 +483,10 @@ keyframes notice {
 }
 
 .footer {
-	margin-top: 3em;
-	color: #ddd;
-	font-size: .75em;
-	line-height: 1.5em;
+	margin-top: 19px;
+	color: rgba(255,255,255,.5);
+	font-size: 14px;
+	line-height: 22px;
 	-o-transition: color .15s linear;
 	-moz-transition: color .15s linear;
 	-webkit-transition: color .15s linear;
@@ -423,17 +496,16 @@ keyframes notice {
 .footer a {
 	color: #aaa;
 	text-decoration: none;
-	border-bottom: 1px dotted #aaa;
+	border-bottom: 1px solid #aaa;
 	-o-transition: color .15s linear, border .15s linear;
 	-moz-transition: color .15s linear, border .15s linear;
 	-webkit-transition: color .15s linear, border .15s linear;
 	transition: color .15s linear, border .15s linear;
 }
 
-.footer:hover { color: #aaa; }
-.footer:hover a {
-	color: #000;
-	border-bottom: 1px solid #000;
+.footer a:hover {
+	color: #fff;
+	border-bottom: 1px solid #fff;
 }
 
 @media (max-width: 690px) {
@@ -451,8 +523,7 @@ keyframes notice {
 		padding: 0 50px 30px 50px;
 	}
 	html.series .navigation li {
-		font-family: "myriad-pro", sans-serif;
-		font-weight: 400;
+		font-family: 'karbonregular', sans-serif;
 		font-size: .2em;
 	}
 	html.series .navigation li a {
@@ -475,12 +546,34 @@ keyframes notice {
 		padding: 0 50px 30px 50px;
 	}
 	.navigation li {
-		font-family: "myriad-pro", sans-serif;
-		font-weight: 400;
+		font-family: 'karbonregular', sans-serif;
 		font-size: .2em;
 	}
 	.navigation li a {
 		font-size: 1em;
+	}
+	.navigation > #new,
+	.navigation > #life,
+	.navigation > #land,
+	.navigation > #travel,
+	.navigation > #love,
+	.navigation > #flora,
+	.navigation > #food,
+	.navigation > #series,
+	.navigation > #mobile {
+	  font-size: 30px;
+	}
+	.navigation > #new::after,
+	.navigation > #life::after,
+	.navigation > #land::after,
+	.navigation > #travel::after,
+	.navigation > #love::after,
+	.navigation > #flora::after,
+	.navigation > #food::after,
+	.navigation > #series::after,
+	.navigation > #mobile::after {
+	  bottom: -6px;
+	  left: 0px;
 	}
 	.preview {
 		display: none !important;
