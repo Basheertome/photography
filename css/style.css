@@ -360,15 +360,52 @@ h1 a:active {
 	top: 1px;
 }
 
-.navigation > #new::after {background: rgba(255,13,5,1);}
-.navigation > #life::after {background: rgba(69,198,91,1);}
-.navigation > #land::after {background: rgba(255,228,50,1);}
-.navigation > #travel::after {background: rgba(0,73,215,1);}
-.navigation > #love::after {background: rgba(255,11,89,1);}
-.navigation > #flora::after {background: rgba(218,137,240,1);}
-.navigation > #food::after {background: rgba(251,136,50,1);}
-.navigation > #series::after {background: rgba(44,254,213,1);}
-.navigation > #mobile::after {background: rgba(199,243,111,1);}
+::-webkit-scrollbar {height: 4px;}
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 0 4px rgba(0,0,0,.7);
+    -webkit-border-radius: 2px;
+    border-radius: 2px;}
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background: rgba(255,255,255,1);}
+
+.new ::-webkit-scrollbar-thumb,
+.new ::-webkit-scrollbar-track,
+.navigation > #new::after {
+	background: rgba(255,13,5,1);}
+.life ::-webkit-scrollbar-thumb,
+.life ::-webkit-scrollbar-track,
+.navigation > #life::after {
+	background: rgba(69,198,91,1);}
+.land ::-webkit-scrollbar-thumb,
+.land ::-webkit-scrollbar-track,
+.navigation > #land::after {
+	background: rgba(255,228,50,1);}
+.travel ::-webkit-scrollbar-thumb,
+.travel ::-webkit-scrollbar-track,
+.navigation > #travel::after {
+	background: rgba(0,73,215,1);}
+.love ::-webkit-scrollbar-thumb,
+.love ::-webkit-scrollbar-track,
+.navigation > #love::after {
+	background: rgba(255,11,89,1);}
+.flora ::-webkit-scrollbar-thumb,
+.flora ::-webkit-scrollbar-track,
+.navigation > #flora::after {
+	background: rgba(218,137,240,1);}
+.food ::-webkit-scrollbar-thumb,
+.food ::-webkit-scrollbar-track,
+.navigation > #food::after {
+	background: rgba(251,136,50,1);}
+.series ::-webkit-scrollbar-thumb,
+.series ::-webkit-scrollbar-track,
+.navigation > #series::after {
+	background: rgba(44,254,213,1);}
+.mobile ::-webkit-scrollbar-thumb,
+.mobile ::-webkit-scrollbar-track,
+.navigation > #mobile::after {
+	background: rgba(199,243,111,1);}
 
 #photos {
 	position: relative;
