@@ -169,6 +169,7 @@ function previousImage() {
 }
 
 function closePreview() {
+	$('body').css('overflow', 'auto');
 	$('.preview').css({'display' : 'none', 'opacity' : '0'});
 	$('.preview span span, .preview .close').fadeIn(0);
 	$('#fullscreen img').attr({'src' : '../images/fullscreen.png', 'alt' : 'full'});
@@ -176,6 +177,7 @@ function closePreview() {
 }
 
 function fullScreen() {
+	$('body').css('overflow', 'hidden');
 	if ($('#fullscreen img').attr('alt') == 'full') {
 		$('.preview').css('background-image', 'url("' + $('.preview span span img').attr('src') + '")');
 		$('#fullscreen img').attr({'src' : '../images/smallscreen.png', 'alt' : 'small'});
