@@ -426,9 +426,9 @@ h1 a:active {
 
 #photos a {
 	display: block;
-	-moz-box-shadow: inset 8px 8px 0 rgba(38,38,38,1), inset -8px -8px 0 rgba(38,38,38,1);
-	-webkit-box-shadow: inset 8px 8px 0 rgba(38,38,38,1), inset -8px -8px 0 rgba(38,38,38,1);
-	box-shadow: inset 8px 8px 0 rgba(38,38,38,1), inset -8px -8px 0 rgba(38,38,38,1);
+	-moz-box-shadow: inset 8px 8px 0 rgba(80,80,80,1), inset -8px -8px 0 rgba(80,80,80,1);
+	-webkit-box-shadow: inset 8px 8px 0 rgba(80,80,80,1), inset -8px -8px 0 rgba(80,80,80,1);
+	box-shadow: inset 8px 8px 0 rgba(80,80,80,1), inset -8px -8px 0 rgba(80,80,80,1);
 	margin-right: 10px;
 	height: 427px;
 }
