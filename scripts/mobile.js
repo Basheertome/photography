@@ -12,7 +12,7 @@ $(document).ready(function(){
 		      event.preventDefault();
 		      b_url = $(this).children().attr('src').slice(0,-5) + 'b.jpg';
 		      p_title = $(this).children().attr('alt');
-		      $('.preview .info #title').html(p_title).attr('href', 'http://www.flickr.com/photos/basheeriphone/' + $(this).children().attr('id'));
+		      $('.preview .info #title').html(p_title).attr('href', 'https://www.flickr.com/photos/basheeriphone/' + $(this).children().attr('id'));
 		      $('.preview span > a img').attr({'src' : b_url, 'id' : $(this).children().attr('id'), 'style' : 'max-height: ' + $(window).height()*.75 + 'px'});
 		      $('.preview span > a').attr('href', $('.preview .info #title').attr('href'));
 		      $('.preview').css('display', 'table');
@@ -82,7 +82,7 @@ function nextImage() {
 	if ($(window).width() > 640) {
 	      b_url = n_photo.attr('src').slice(0,-5) + 'b.jpg';
 	      p_title = n_photo.attr('alt');
-	      $('.preview .info #title').html(p_title).attr('href', 'http://www.flickr.com/photos/basheeriphone/' + n_photo.attr('id'));
+	      $('.preview .info #title').html(p_title).attr('href', 'https://www.flickr.com/photos/basheeriphone/' + n_photo.attr('id'));
 	      $('.preview span > a img').attr({'src' : b_url, 'style' : 'max-height: ' + $(window).height()*.75 + 'px'});
 	      $('.preview span > a').attr('href', $('.preview .info #title').attr('href'));
 	      $('.preview').css('display', 'table');
@@ -103,7 +103,7 @@ function previousImage() {
 	if ($(window).width() > 640) {
 	      b_url = p_photo.attr('src').slice(0,-5) + 'b.jpg';
 	      p_title = p_photo.attr('alt');
-	      $('.preview .info #title').html(p_title).attr('href', 'http://www.flickr.com/photos/basheeriphone/' + p_photo.attr('id'));
+	      $('.preview .info #title').html(p_title).attr('href', 'https://www.flickr.com/photos/basheeriphone/' + p_photo.attr('id'));
 	      $('.preview span > a img').attr({'src' : b_url, 'style' : 'max-height: ' + $(window).height()*.75 + 'px'});
 	      $('.preview span > a').attr('href', $('.preview .info #title').attr('href'));
 	      $('.preview').css('display', 'table');

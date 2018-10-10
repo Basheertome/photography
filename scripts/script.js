@@ -12,7 +12,7 @@ $(document).ready(function(){
 		      event.preventDefault();
 		      b_url = $(this).children().attr('src').slice(0,-5) + 'b.jpg';
 		      p_title = $(this).children().attr('alt');
-		      $('.preview .info #title').html(p_title).attr('href', 'http://www.flickr.com/photos/basheertome/' + $(this).children().attr('id'));
+		      $('.preview .info #title').html(p_title).attr('href', 'https://www.flickr.com/photos/basheertome/' + $(this).children().attr('id'));
 		      $('.preview span > img').attr({'src' : b_url, 'id' : $(this).children().attr('id'), 'style' : 'max-height: ' + $(window).height() + 'px'});
 		      $('.preview .info #exif').html("");
 		      $.getJSON('https://api.flickr.com/services/rest/?format=json&method=flickr.photos.getExif&api_key=9741a22f899708369501d59bfaa1b26a&format=json&nojsoncallback=1&photo_id=' + $(this).children().attr('id'), function(data) {
@@ -101,7 +101,7 @@ function nextImage() {
 	if ($(window).width() > 640) {
 	      b_url = n_photo.attr('src').slice(0,-5) + 'b.jpg';
 	      p_title = n_photo.attr('alt');
-	      $('.preview .info #title').html(p_title).attr('href', 'http://www.flickr.com/photos/basheertome/' + n_photo.attr('id'));
+	      $('.preview .info #title').html(p_title).attr('href', 'https://www.flickr.com/photos/basheertome/' + n_photo.attr('id'));
 	      $('.preview span > img').attr({'src' : b_url, 'style' : 'max-height: ' + $(window).height() + 'px'});
 	      $('.preview .info #exif').html("");
 	      $.getJSON('https://api.flickr.com/services/rest/?format=json&method=flickr.photos.getExif&api_key=9741a22f899708369501d59bfaa1b26a&format=json&nojsoncallback=1&photo_id=' + n_photo.attr('id'), function(data) {
@@ -141,7 +141,7 @@ function previousImage() {
 	if ($(window).width() > 640) {
 	      b_url = p_photo.attr('src').slice(0,-5) + 'b.jpg';
 	      p_title = p_photo.attr('alt');
-	      $('.preview .info #title').html(p_title).attr('href', 'http://www.flickr.com/photos/basheertome/' + p_photo.attr('id'));
+	      $('.preview .info #title').html(p_title).attr('href', 'https://www.flickr.com/photos/basheertome/' + p_photo.attr('id'));
 	      $('.preview span > img').attr({'src' : b_url, 'style' : 'max-height: ' + $(window).height() + 'px'});
 	      $('.preview .info #exif').html("");
 	      $.getJSON('https://api.flickr.com/services/rest/?format=json&method=flickr.photos.getExif&api_key=9741a22f899708369501d59bfaa1b26a&format=json&nojsoncallback=1&photo_id=' + p_photo.attr('id'), function(data) {

@@ -1,3 +1,0 @@
-ErrorDocument 404 http://click.basheer.co/error.html
-ErrorDocument 403 http://click.basheer.co/error.html
-ErrorDocument 500 http://click.basheer.co/error.html
