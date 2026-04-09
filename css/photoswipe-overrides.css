@@ -1,0 +1,206 @@
+/*
+ * After photoswipe.css + photoswipe-dynamic-caption-plugin.css.
+ * Karbon captions + dim backdrop. Do not use width:auto !important on --below captions — the plugin sets
+ * inline width to match the image; !important blocks that and shrinks the metadata bar.
+ */
+
+@keyframes click-pswp-fade {
+	from {
+		opacity: 0.001;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes click-pswp-spin {
+	from {
+		transform: translate(-50%, -50%) rotate(0deg);
+	}
+	to {
+		transform: translate(-50%, -50%) rotate(-360deg);
+	}
+}
+
+.pswp {
+	--click-pswp-frame: #0f0601;
+	--pswp-bg: rgba(0, 0, 0, 1.0);
+	--pswp-placeholder-bg: var(--click-pswp-frame);
+}
+
+/* Loading: warm dark plate; ⟳ (U+27F3) matches arrow/close glyph styling (img placeholders can’t use ::after). */
+div.pswp__img--placeholder,
+.pswp__img--placeholder.pswp__img {
+	background-color: var(--click-pswp-frame);
+	background-image: none;
+	box-shadow: none !important;
+	outline: none;
+}
+
+.pswp__img--with-bg {
+	background-color: var(--click-pswp-frame);
+	background-image: none;
+}
+
+.pswp__zoom-wrap:has(.pswp__img--placeholder)::after {
+	content: '\27F3';
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	z-index: 2;
+	font-size: 32px;
+	line-height: 1;
+	color: #AE8043;
+	font-family: 'Apple Symbols', 'Segoe UI Symbol', 'Noto Sans Symbols 2', 'DejaVu Sans', sans-serif;
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+	pointer-events: none;
+	animation: click-pswp-spin 0.85s linear infinite;
+}
+
+/* Loaded bitmap fades in; mat is on .pswp__zoom-wrap above. */
+.pswp__zoom-wrap img.pswp__img:not(.pswp__img--placeholder) {
+	animation: click-pswp-fade 0.28s ease-out;
+}
+
+/* Close: thick × (hide default SVG, same treatment as arrows). */
+.pswp__button--close .pswp__icn {
+	display: none !important;
+}
+
+.pswp__button--close {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	overflow: visible !important;
+	font-family: system-ui, 'Segoe UI Symbol', 'Apple Symbols', 'Noto Sans Symbols 2', 'DejaVu Sans', sans-serif !important;
+	font-size: 1.75rem !important;
+	font-weight: 400 !important;
+	line-height: 1 !important;
+	color: #AE8043 !important;
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9) !important;
+	margin-right: 0 !important;
+}
+
+.pswp__button--close::after {
+	content: '\00D7';
+}
+
+/* Bar arrows (U+21E4 / U+21E5) */
+.pswp__button--arrow .pswp__icn {
+	display: none !important;
+}
+
+.pswp__button--arrow {
+	position: absolute !important;
+	top: 50% !important;
+	margin-top: -40px !important;
+	width: 3rem !important;
+	height: 5rem !important;
+	display: flex !important;
+	align-items: center !important;
+	font-family: 'Apple Symbols', 'Segoe UI Symbol', 'Noto Sans Symbols 2', 'DejaVu Sans', sans-serif !important;
+	font-size: 32px !important;
+	line-height: 1 !important;
+	color: #AE8043 !important;
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9) !important;
+	background: transparent !important;
+	border: none !important;
+}
+
+.pswp__button--arrow--prev {
+	left: 0 !important;
+	right: auto !important;
+	justify-content: flex-start !important;
+	padding-left: 1rem !important;
+}
+
+.pswp__button--arrow--prev::after {
+	content: '\21E4';
+}
+
+.pswp__button--arrow--next {
+	right: 0 !important;
+	left: auto !important;
+	justify-content: flex-end !important;
+	padding-right: 1rem !important;
+}
+
+.pswp__button--arrow--next::after {
+	content: '\21E5';
+}
+
+.pswp__button--arrow--next .pswp__icn {
+	transform: none !important;
+}
+
+.pswp--touch .pswp__button--arrow {
+	visibility: visible !important;
+}
+
+.pswp__counter {
+	display: none !important;
+}
+
+.pswp__button--zoom {
+	display: none !important;
+}
+
+/* Let the plugin’s inline width match the image; only kill vendor max-width:700px */
+.pswp__dynamic-caption.pswp__dynamic-caption--below {
+	max-width: none !important;
+}
+
+.pswp__dynamic-caption {
+	font-family: 'karbonregular', sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	line-height: 1.45;
+	letter-spacing: 0.12em;
+	color: #d8c8b0;
+	box-sizing: border-box;
+}
+
+.pswp__dynamic-caption--below {
+	background: var(--click-pswp-frame);
+	padding: 1.5em 2em;
+	margin-top: 0;
+}
+
+.pswp__dynamic-caption a {
+	font-family: inherit;
+	font-size: 1.4em;
+	color: #AE8043;
+	background: none;
+	text-transform: uppercase;
+	text-decoration: none;
+	letter-spacing: 1.0px;
+	filter: blur(0.3px);
+}
+
+.pswp__dynamic-caption a:hover {
+	color: #efe4d4;
+	text-decoration: none;
+}
+
+.click-pswp-caption {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0.6em 1.5em;
+	width: 100%;
+	min-width: 0;
+}
+
+.pswp-exif {
+	margin: 0;
+	margin-left: auto;
+	text-align: right;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	color: #685235;
+	filter: blur(0.3px);
+	font-size: 1.4em;
+	flex: 1 1 auto;
+	min-width: 10em;
+}

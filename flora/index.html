@@ -8,14 +8,20 @@
 	<link rel="shortcut icon" href="../favicon.ico" />
     <style type="text/css">html { background: #000; }</style>
     <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="../scripts/photoswipe/photoswipe.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="../scripts/photoswipe/photoswipe-dynamic-caption-plugin.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="../css/photoswipe-overrides.css" type="text/css" media="screen" />
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
 	<meta name="apple-mobile-web-app-capable" content="yes" /> 
 	<meta name="apple-touch-fullscreen" content="yes" />
 	<link href='https://api.flickr.com/services/feeds/photos_public.gne?id=10019047@N05&lang=en-us&format=rss_200' rel='alternate' type='application/atom+xml' />
 	<script src="../scripts/jquery.min.js"></script>
-	<script src="../scripts/jquery.hotkeys.js"></script>
 	<script src="../scripts/script.js"></script>
 	<script type="text/javascript" language="javascript">
+	function flickrAttr(t) {
+	 if (t == null) return '';
+	 return String(t).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+	}
 	function jsonFlickrApi(rsp) {
 	 if (rsp.stat != "ok"){return;}
 	 var s = new Array();
@@ -30,8 +36,9 @@
 	  	var letter = "z";
 	  }
 	  t_url = "https://farm" + photo.farm + ".static.flickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_" + letter + ".jpg"; 
+	  large_url = photo.url_o ? photo.url_o : (t_url.slice(0, -5) + 'b.jpg');
 	  p_url = "https://www.flickr.com/photos/basheertome/" + photo.id;
-	  s.push('<td title="' + photo.title + '"' + p_vert + '><a href="' + p_url + '"><img src="' + t_url + '" alt="' + photo.title + '" id="' + photo.id + '" /></a></td>');
+	  s.push('<td title="' + flickrAttr(photo.title) + '"' + p_vert + '><a href="' + flickrAttr(large_url) + '" data-pswp-width="' + photo.o_width + '" data-pswp-height="' + photo.o_height + '" data-photo-id="' + photo.id + '" data-flickr-page="' + p_url + '" data-title="' + flickrAttr(photo.title) + '"><img src="' + t_url + '" alt="' + flickrAttr(photo.title) + '" id="' + photo.id + '" /></a></td>');
 	 }
 	 s.reverse();
 	 for (var i=0; i < s.length; i++) {
@@ -42,24 +49,7 @@
 	<script src="../scripts/stats.js"></script>
 </head>
 <body class="flora">
-	
-<div class="preview"><span>
-	<span>
-		<img src="" />
-		<div class="info">
-			<a href="" id="title" target="_blank"></a>
-			<p id="exif"></p>
-		</div>
-	</span>
-	<div class="toolbar">
-		<p id="close"><img src="../images/close.png" width="16px" height="16px" alt="x" /></p>
-		<p id="fullscreen"><img src="../images/fullscreen.png" width="16px" height="16px" alt="full" /></p>
-	</div>
-	<div class="previous"><a href="#"><div> ⇤</div></a></div>
-	<div class="next"><a href="#"><div> ⇥</div></a></div>
-	<div class="close"></div>
-</span></div>
-	
+
 <h1><a href="https://basheer.co/">Basheer Tome</a></h1>
 	
 <ul class="navigation">
@@ -71,15 +61,15 @@
 	<li id="flora">flora</li>
 	<li><a id="food" href="/food">food</a></li>
 	<li><a id="series" href="/series">series</a></li>
-	<li><a id="mobile" href="/mobile">mobile</a></li>
 </ul>
 
 <div id="photos"><table><tr>
-	<td id="scroll"><span>scroll <span>&#8677;</span></span></td>
-	<script type="text/javascript" language="javascript" src="https://api.flickr.com/services/rest/?format=json&method=flickr.photosets.getPhotos&photoset_id=72157632306849130&media=photos&api_key=9741a22f899708369501d59bfaa1b26a&extras=o_dims,url_c"></script>
+	<script type="text/javascript" language="javascript" src="https://api.flickr.com/services/rest/?format=json&method=flickr.photosets.getPhotos&photoset_id=72157632306849130&media=photos&api_key=9741a22f899708369501d59bfaa1b26a&extras=o_dims,url_c,url_o"></script>
 </tr></table></div>
 
 <div class="footer">Creating visual memories you might have had. Follow me on <a href="https://www.flickr.com/photos/basheertome">Flickr</a>.</div>
+
+<script type="module" src="../scripts/photoswipe-init.js"></script>
 
 </body>
 </html>
