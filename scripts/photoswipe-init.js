@@ -56,7 +56,7 @@ function patchCurrSlideExifIfMatch(photoId, text) {
   if (!slide) return;
   const anchor = slide.data?.element;
   if (!anchor || anchor.getAttribute('data-photo-id') !== String(photoId)) return;
-  const span = slide.dynamicCaption?.element?.querySelector('.pswp-exif');
+  const span = slide.dynamicCaption?.element?.querySelector('.pswp-exif-text');
   if (span) span.textContent = text;
 }
 
@@ -92,105 +92,31 @@ function ensureExifFormatted(photoId) {
   return p;
 }
 
-/** Warm EXIF while the thumb grid is visible so captions are ready when the lightbox opens. */
-function prefetchExifForGallery(root) {
-  const ids = [
-    ...new Set(
-      [...root.querySelectorAll('td a[data-photo-id]')]
-        .map((a) => a.getAttribute('data-photo-id'))
-        .filter(Boolean),
-    ),
-  ];
-  if (!ids.length) return;
-  const concurrency = Math.min(12, ids.length);
-  let next = 0;
-  function worker() {
-    return (async function drain() {
-      while (next < ids.length) {
-        const id = ids[next++];
-        await ensureExifFormatted(id);
-      }
-    })();
-  }
-  void Promise.all(Array.from({ length: concurrency }, worker));
-}
-
-/**
- * PhotoSwipe sizes the <img> from slide width/height (Flickr o_dims). If that box ≠ intrinsic pixels, the bitmap
- * stretches. Cached slides skip load() / loadComplete on revisit, so we also reconcile on every `change` when the
- * image is already complete (fixes fast swiping and missed loadComplete).
- */
-function syncSlideDimensionsFromLoadedImage(slide, content) {
-  const el = content?.element;
-  if (!el || el.tagName !== 'IMG' || !content.isImageContent() || content.isError() || content.isLoading()) {
-    return;
-  }
-
-  const nw = el.naturalWidth;
-  const nh = el.naturalHeight;
-  if (!nw || !nh || !el.complete) {
-    return;
-  }
-
-  const sw = Math.round(slide.width);
-  const sh = Math.round(slide.height);
-  if (sw !== nw || sh !== nh) {
-    const data = slide.data;
-    data.width = data.w = nw;
-    data.height = data.h = nh;
-    content.width = nw;
-    content.height = nh;
-    slide.width = nw;
-    slide.height = nh;
-
-    slide.calculateSize();
-    slide.zoomAndPanToInitial();
-    slide.applyCurrentZoomPan();
-    slide.updateContentSize(true);
-  }
-}
-
-function scheduleReconcileIntrinsicSize(pswp) {
-  requestAnimationFrame(() => {
-    const slide = pswp.currSlide;
-    if (!slide?.content) return;
-    syncSlideDimensionsFromLoadedImage(slide, slide.content);
-  });
-}
-
 const galleryEl = document.getElementById('photos');
 if (galleryEl) {
   exifGalleryRoot = galleryEl;
-  prefetchExifForGallery(galleryEl);
+  // Fetch only the photo the visitor is approaching; camera metadata never blocks opening.
+  const warmExif = (event) => {
+    const anchor = event.target.closest('a[data-photo-id]');
+    if (anchor && galleryEl.contains(anchor)) void ensureExifFormatted(anchor.dataset.photoId);
+  };
+  galleryEl.addEventListener('pointerover', warmExif);
+  galleryEl.addEventListener('focusin', warmExif);
 
+  const zoomedContent = new WeakSet();
   const lightbox = new PhotoSwipeLightbox({
     gallery: galleryEl,
     children: 'td a',
     /** Use the visible <img> rect for zoom-from-thumb (do not set data-cropped unless thumbs are true object-fit: cover crops). */
     thumbSelector: 'img',
     pswpModule: () => import('./photoswipe/photoswipe.esm.js'),
-    /**
-     * Do not open until EXIF for every grid photo is on the anchors (`data-exif-caption`), so caption HTML is
-     * complete when the dynamic-caption plugin first renders (no empty span then patch). Shares work with prefetch.
-     */
-    openPromise() {
-      const anchors = [...galleryEl.querySelectorAll('td a[data-photo-id]')];
-      const ids = [
-        ...new Set(
-          anchors
-            .map((a) => a.getAttribute('data-photo-id'))
-            .filter(Boolean),
-        ),
-      ];
-      if (!ids.length) return Promise.resolve();
-      return Promise.all(ids.map((id) => ensureExifFormatted(id)));
-    },
     // https://photoswipe.com/opening-or-closing-transition/
     showHideAnimationType: 'zoom',
     // Default is 4000px — wider images disable the zoom transition entirely.
     maxWidthToAnimate: 16000,
     // https://photoswipe.com/options/ — default 2000ms delays the spinner unreasonably.
     preloaderDelay: 0,
+    preload: [1, 1],
     paddingFn: (viewportSize) => {
       const x = viewportSize.x;
       const y = viewportSize.y;
@@ -203,36 +129,16 @@ if (galleryEl) {
     },
   });
 
-  /**
-   * PhotoSwipe needs numeric width/height for zoom/bounds/caption. Use data-pswp-* (Flickr o_dims).
-   * Do not use the grid thumbnail's natural size: thumbs are often _c (800px), which caps the overlay at 800px
-   * wide even when href loads the original. If dims are missing, use a neutral placeholder; loadComplete fixes
-   * layout from the loaded file's intrinsic pixels.
-   */
-  lightbox.addFilter('domItemData', (itemData, element, linkEl) => {
-    if (!linkEl) return itemData;
-
-    let w =
-      parseInt(linkEl.getAttribute('data-pswp-width') || '', 10) ||
-      Number(itemData.width) ||
-      Number(itemData.w) ||
-      0;
-    let h =
-      parseInt(linkEl.getAttribute('data-pswp-height') || '', 10) ||
-      Number(itemData.height) ||
-      Number(itemData.h) ||
-      0;
-
-    if (!w || !h) {
-      w = 3000;
-      h = 2000;
-    }
-
-    itemData.width = itemData.w = w;
-    itemData.height = itemData.h = h;
-    return itemData;
+  // Fit view uses Flickr's display renditions; zooming unlocks the full original.
+  // PhotoSwipe/browser still account for devicePixelRatio within this ceiling.
+  lightbox.addFilter('srcsetSizesWidth', (width, content) => {
+    if (zoomedContent.has(content)) return width;
+    const fitWidth = Number(content.data.element?.dataset.pswpFitWidth);
+    return fitWidth > 0 ? Math.min(width, Math.floor(fitWidth / (window.devicePixelRatio || 1))) : width;
   });
 
+  // Dimensions describe the largest srcset candidate and remain stable when a smaller
+  // rendition is selected. Replacing them with naturalWidth would break zoom and captions.
   // Positions caption below the image and sizes the pan area (official plugin).
   // https://github.com/dimsemenov/photoswipe-dynamic-caption-plugin
   new PhotoSwipeDynamicCaption(lightbox, {
@@ -258,53 +164,127 @@ if (galleryEl) {
         flickr.replace(/"/g, '&quot;') +
         '" target="_blank" rel="noopener">' +
         safe +
-        '</a><span class="pswp-exif">' +
+        '</a><span class="pswp-exif"><span class="pswp-exif-text">' +
         exifSafe +
-        '</span></div>'
+        '</span></span></div>'
       );
     },
   });
 
   lightbox.on('afterInit', () => {
-    const { pswp } = lightbox;
+    const pswp = lightbox.pswp;
     if (!pswp) return;
+    let frame = 0;
+    let needsRelayout = false;
+    let isRelayout = false;
+    let request = 0;
+    const observers = new Map();
+    const captionHeights = new WeakMap();
 
-    let req = 0;
+    function scheduleLayout(relayout = false) {
+      needsRelayout ||= relayout;
+      if (!frame) frame = requestAnimationFrame(updateLayout);
+    }
 
-    const applyExif = () => {
+    function updateLayout() {
+      frame = 0;
+      const slide = pswp.currSlide;
+      const caption = slide?.dynamicCaption?.element;
+      if (!slide || !caption || !pswp.opener.isOpen) return;
+      if (needsRelayout && slide.currZoomLevel <= slide.zoomLevels.initial + 0.001) {
+        needsRelayout = false;
+        // Let the caption plugin reserve room again after fonts/EXIF change its height.
+        isRelayout = true;
+        slide.calculateSize();
+        slide.zoomAndPanToInitial();
+        slide.applyCurrentZoomPan();
+        slide.updateContentSize(true);
+        isRelayout = false;
+      }
+      const holder = slide.holderElement.getBoundingClientRect();
+      const image = slide.content?.element;
+      const rect = image?.tagName === 'IMG' && image.isConnected
+        ? image.getBoundingClientRect()
+        : null;
+      const width = rect?.width || slide.width * slide.currZoomLevel;
+      const height = rect?.height || slide.height * slide.currZoomLevel;
+      const left = rect ? rect.left - holder.left : slide.pan.x;
+      const top = rect ? rect.top - holder.top : slide.pan.y;
+      // Use the displayed image, including its current pan, rather than stale initial bounds.
+      caption.style.left = left + 'px';
+      caption.style.top = (top + height) + 'px';
+      caption.style.width = width + 'px';
+      caption.style.transform = 'none';
+      // Native hover tooltips are needed only when the visible text is clipped.
+      caption.querySelectorAll('.click-pswp-caption > a, .pswp-exif-text').forEach((item) => {
+        if (item.scrollWidth > item.clientWidth) item.title = item.textContent;
+        else item.removeAttribute('title');
+      });
+      const imageTop = holder.top + top - pswp.element.getBoundingClientRect().top;
+      const center = (Math.max(0, imageTop) + Math.min(pswp.viewportSize.y, imageTop + height)) / 2;
+      pswp.element.style.setProperty('--click-image-center-y', center + 'px');
+    }
+
+    function watchCaption(slide) {
+      const caption = slide?.dynamicCaption?.element;
+      if (!caption || observers.has(slide)) return;
+      const observer = new ResizeObserver(() => {
+        const height = caption.getBoundingClientRect().height;
+        const changed = Math.abs(height - (captionHeights.get(caption) || 0)) > 0.5;
+        captionHeights.set(caption, height);
+        if (slide === pswp.currSlide) scheduleLayout(changed);
+      });
+      observer.observe(caption);
+      caption.querySelectorAll('.click-pswp-caption > a, .pswp-exif-text').forEach((item) => observer.observe(item));
+      observers.set(slide, observer);
+    }
+
+    function applyExif() {
       const slide = pswp.currSlide;
       const anchor = slide?.data?.element;
-      const capEl = slide?.dynamicCaption?.element;
-      const exifEl = capEl?.querySelector('.pswp-exif');
-      if (!anchor || !exifEl) return;
-
-      const photoId = anchor.getAttribute('data-photo-id');
-      const id = ++req;
-      if (!photoId) return;
-
-      if (exifFormattedById.has(photoId)) {
-        exifEl.textContent = exifFormattedById.get(photoId);
-        return;
-      }
-
-      ensureExifFormatted(photoId).then((text) => {
-        if (id !== req) return;
-        exifEl.textContent = text;
+      const exif = slide?.dynamicCaption?.element?.querySelector('.pswp-exif-text');
+      const id = ++request;
+      if (!anchor || !exif) return;
+      ensureExifFormatted(anchor.dataset.photoId).then((text) => {
+        if (id !== request || !exif.isConnected) return;
+        exif.textContent = text;
+        scheduleLayout(true);
       });
-    };
+    }
 
-    pswp.on('change', applyExif);
-    pswp.on('openingAnimationEnd', applyExif);
-
-    pswp.on('loadComplete', (e) => {
-      const { slide, content } = e;
-      if (!slide || !content || content.isError()) return;
-      syncSlideDimensionsFromLoadedImage(slide, content);
+    pswp.on('dynamicCaptionUpdateHTML', ({ slide }) => watchCaption(slide));
+    pswp.mainScroll.itemHolders.forEach(({ slide }) => watchCaption(slide));
+    pswp.on('change', () => {
+      watchCaption(pswp.currSlide);
+      applyExif();
+      scheduleLayout(true);
     });
-
-    pswp.on('change', () => scheduleReconcileIntrinsicSize(pswp));
-
-    pswp.on('openingAnimationEnd', () => scheduleReconcileIntrinsicSize(pswp));
+    pswp.on('openingAnimationEnd', () => scheduleLayout(true));
+    pswp.on('resize', () => scheduleLayout(true));
+    pswp.on('beforeZoomTo', ({ destZoomLevel }) => {
+      const slide = pswp.currSlide;
+      if (destZoomLevel > slide.zoomLevels.initial + 0.001) zoomedContent.add(slide.content);
+    });
+    pswp.on('zoomPanUpdate', ({ slide }) => {
+      if (!isRelayout && pswp.opener.isOpen && slide.currZoomLevel > slide.zoomLevels.initial + 0.001) {
+        zoomedContent.add(slide.content);
+      }
+      scheduleLayout();
+    });
+    pswp.on('imageSizeChange', () => scheduleLayout());
+    pswp.on('loadComplete', () => scheduleLayout());
+    pswp.on('slideDestroy', ({ slide }) => {
+      observers.get(slide)?.disconnect();
+      observers.delete(slide);
+    });
+    pswp.on('destroy', () => {
+      cancelAnimationFrame(frame);
+      request++;
+      observers.forEach((observer) => observer.disconnect());
+      observers.clear();
+    });
+    applyExif();
+    scheduleLayout(true);
   });
 
   lightbox.init();
