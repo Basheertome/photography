@@ -102,6 +102,7 @@ h1 a:active {
 	text-transform: uppercase;
 	font-size: 4.5em;
 	color: #dfdbd3;
+	transform: translateZ(0px);
 	filter: blur(0.3px);
 }
 
